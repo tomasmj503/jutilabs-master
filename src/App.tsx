@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
-import { 
-  PhoneMissed, 
-  Bot, 
-  MessageSquare, 
-  Star, 
-  RefreshCw, 
-  CheckCircle2, 
-  ShieldCheck, 
-  MapPin, 
+import {
+  PhoneMissed,
+  Bot,
+  MessageSquare,
+  Star,
+  RefreshCw,
+  CheckCircle2,
+  ShieldCheck,
+  MapPin,
   ArrowRight,
   TrendingDown,
   DollarSign,
   Calculator,
-  Zap
+  Zap,
+  PlayCircle
 } from 'lucide-react';
 
 export default function App() {
@@ -25,10 +26,10 @@ export default function App() {
   return (
     <div className="min-h-screen bg-base font-['Roboto'] text-dark pb-24 md:pb-0">
       {/* Hero Section */}
-      <section className="bg-authority text-white pt-16 pb-20 px-4">
+      <header className="bg-authority text-white pt-16 pb-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full text-sm font-bold text-action mb-6">
-            <MapPin size={16} />
+            <MapPin size={16} aria-hidden="true" />
             <span>Exclusivo para Dueños de HVAC en Texas</span>
           </div>
           <h1 className="font-['Montserrat'] text-4xl md:text-6xl font-black leading-tight mb-6">
@@ -37,11 +38,29 @@ export default function App() {
           <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
             Implementamos un sistema 24/7 que atrapa cada llamada perdida y la convierte en una cita agendada. Y para que funcione perfecto, <span className="font-bold text-white">te construimos una web premium completamente GRATIS.</span>
           </p>
-          <a href="#disponibilidad" className="block md:inline-block w-full md:w-auto bg-action text-authority font-black text-lg py-4 px-8 rounded-lg shadow-[0_4px_14px_0_rgba(249,152,32,0.39)] hover:shadow-[0_6px_20px_rgba(249,152,32,0.23)] hover:-translate-y-1 transition-all duration-200">
+          <a href="#disponibilidad" className="block md:inline-block w-full md:w-auto bg-action text-authority font-black text-lg py-4 px-8 rounded-lg shadow-[0_4px_14px_0_rgba(249,152,32,0.39)] hover:shadow-[0_6px_20px_rgba(249,152,32,0.23)] hover:-translate-y-1 hover:scale-105 active:scale-95 transition-all duration-200" aria-label="Verificar disponibilidad en tu ciudad">
             Ver Si Mi Ciudad Está Disponible
           </a>
         </div>
-      </section>
+
+        {/* Added Lazy Loaded HVAC Image for Performance Check */}
+        <div className="max-w-4xl mx-auto mt-12 rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-dark/80 relative flex items-center justify-center p-8 group cursor-pointer hover:border-action/50 transition-colors duration-300 min-h-[400px]">
+          <div className="absolute inset-0 bg-gradient-to-br from-authority/50 to-dark/95 z-0"></div>
+
+          <div className="relative z-10 text-center flex flex-col items-center">
+            <div className="bg-action/20 text-action p-4 rounded-full mb-6 group-hover:scale-110 group-hover:bg-action group-hover:text-authority transition-all duration-300 shadow-[0_0_30px_rgba(249,152,32,0.15)] group-hover:shadow-[0_0_40px_rgba(249,152,32,0.4)]">
+              <PlayCircle size={64} strokeWidth={1.5} />
+            </div>
+
+            <h3 className="font-['Montserrat'] text-2xl font-bold text-white mb-2">
+              Descubre Cómo Funciona el Sistema Jutilabs
+            </h3>
+            <p className="text-gray-400 text-sm max-w-sm">
+              Mira este video de 3 minutos para ver cómo automatizamos la captura y seguimiento de tus prospectos 24/7.
+            </p>
+          </div>
+        </div>
+      </header>
 
       {/* The Problem */}
       <section className="py-20 px-4 bg-white">
@@ -97,7 +116,7 @@ export default function App() {
                 <p className="text-sm text-gray-300">Descubre cuánto dinero estás perdiendo exactamente.</p>
               </div>
             </div>
-            
+
             <div className="p-8 md:p-12 grid md:grid-cols-2 gap-12 items-center">
               <div className="space-y-8">
                 <div>
@@ -105,45 +124,51 @@ export default function App() {
                     <label className="font-bold text-dark">Llamadas Perdidas / Semana</label>
                     <span className="text-authority font-black">{missedCalls}</span>
                   </div>
-                  <input 
-                    type="range" 
-                    min="1" 
-                    max="50" 
-                    value={missedCalls} 
+                  <input
+                    type="range"
+                    min="1"
+                    max="50"
+                    value={missedCalls}
                     onChange={(e) => setMissedCalls(Number(e.target.value))}
-                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-action"
-                  />
-                </div>
-                
-                <div>
-                  <div className="flex justify-between mb-2">
-                    <label className="font-bold text-dark">% que son Emergencias</label>
-                    <span className="text-authority font-black">{emergencyPercent}%</span>
-                  </div>
-                  <input 
-                    type="range" 
-                    min="10" 
-                    max="100" 
-                    step="5"
-                    value={emergencyPercent} 
-                    onChange={(e) => setEmergencyPercent(Number(e.target.value))}
-                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-action"
+                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-action hover:bg-gray-300 focus-visible:ring-2 focus-visible:ring-action focus-visible:ring-offset-2 transition-colors duration-200"
+                    aria-label="Llamadas perdidas por semana"
+                    title="Ajustar llamadas perdidas por semana"
                   />
                 </div>
 
                 <div>
                   <div className="flex justify-between mb-2">
-                    <label className="font-bold text-dark">Ticket Promedio ($)</label>
-                    <span className="text-authority font-black">${avgTicket}</span>
+                    <label className="font-bold text-dark" id="emergency-label">% que son Emergencias</label>
+                    <span className="text-authority font-black" aria-live="polite">{emergencyPercent}%</span>
                   </div>
-                  <input 
-                    type="range" 
-                    min="500" 
-                    max="5000" 
+                  <input
+                    type="range"
+                    min="10"
+                    max="100"
+                    step="5"
+                    value={emergencyPercent}
+                    onChange={(e) => setEmergencyPercent(Number(e.target.value))}
+                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-action hover:bg-gray-300 focus-visible:ring-2 focus-visible:ring-action focus-visible:ring-offset-2 transition-colors duration-200"
+                    aria-labelledby="emergency-label"
+                    title="Ajustar porcentaje de emergencias"
+                  />
+                </div>
+
+                <div>
+                  <div className="flex justify-between mb-2">
+                    <label className="font-bold text-dark" id="ticket-label">Ticket Promedio ($)</label>
+                    <span className="text-authority font-black" aria-live="polite">${avgTicket}</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="500"
+                    max="5000"
                     step="100"
-                    value={avgTicket} 
+                    value={avgTicket}
                     onChange={(e) => setAvgTicket(Number(e.target.value))}
-                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-action"
+                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-action hover:bg-gray-300 focus-visible:ring-2 focus-visible:ring-action focus-visible:ring-offset-2 transition-colors duration-200"
+                    aria-labelledby="ticket-label"
+                    title="Ajustar ticket promedio"
                   />
                 </div>
               </div>
@@ -216,11 +241,11 @@ export default function App() {
                     <p className="text-xs text-green-600 font-medium">En línea</p>
                   </div>
                 </div>
-                
+
                 {/* Chat Area */}
                 <div className="flex-1 bg-[#f8f9fa] p-4 flex flex-col gap-4 overflow-y-auto">
                   <div className="text-center text-xs text-gray-400 my-2">Hoy 2:14 PM</div>
-                  
+
                   {/* Missed call indicator */}
                   <div className="bg-red-50 border border-red-100 text-red-600 text-xs py-2 px-3 rounded-lg text-center flex items-center justify-center gap-2 mx-4">
                     <PhoneMissed size={14} /> Llamada perdida de Cliente
@@ -229,24 +254,24 @@ export default function App() {
                   <div className="self-start bg-gray-200 text-dark py-2 px-4 rounded-2xl rounded-tl-sm max-w-[85%] text-sm shadow-sm">
                     Hola, llamaste a Texas Pro HVAC. Estoy en un techo ahora mismo. ¿Es una emergencia de AC?
                   </div>
-                  
+
                   <div className="self-end bg-action text-white py-2 px-4 rounded-2xl rounded-tr-sm max-w-[85%] text-sm shadow-sm">
                     ¡Sí! Mi aire dejó de enfriar y tengo niños en casa. Hace 95 grados.
                   </div>
-                  
+
                   <div className="self-start bg-gray-200 text-dark py-2 px-4 rounded-2xl rounded-tl-sm max-w-[85%] text-sm shadow-sm">
                     Entendido. Cobramos $89 por la visita de diagnóstico. Tengo un técnico disponible a las 4:30 PM hoy. ¿Te reservo ese espacio?
                   </div>
-                  
+
                   <div className="self-end bg-action text-white py-2 px-4 rounded-2xl rounded-tr-sm max-w-[85%] text-sm shadow-sm">
                     Sí por favor. Mi dirección es 123 Main St.
                   </div>
-                  
+
                   <div className="self-start bg-gray-200 text-dark py-2 px-4 rounded-2xl rounded-tl-sm max-w-[85%] text-sm shadow-sm">
                     ¡Listo! Cita confirmada para hoy 4:30 PM en 123 Main St. El técnico te llamará 15 mins antes de llegar. 🛠️❄️
                   </div>
                 </div>
-                
+
                 {/* Phone Footer */}
                 <div className="bg-white p-4 border-t border-gray-200">
                   <div className="bg-gray-100 rounded-full h-10 px-4 flex items-center text-gray-400 text-sm">
@@ -265,26 +290,26 @@ export default function App() {
           <div className="absolute -top-24 -left-24 w-96 h-96 bg-white rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-action rounded-full blur-3xl"></div>
         </div>
-        
+
         <div className="max-w-4xl mx-auto relative z-10 text-center">
           <ShieldCheck size={64} className="text-action mx-auto mb-6" />
           <h2 className="font-['Montserrat'] text-3xl md:text-5xl font-black mb-8">
-            ¿Dónde está la trampa? <br/>
+            ¿Dónde está la trampa? <br />
             <span className="text-gray-400 text-2xl md:text-4xl">¿Por qué regalamos webs de $3,500?</span>
           </h2>
-          
+
           <div className="bg-white/10 border border-white/20 p-8 md:p-12 rounded-3xl text-left backdrop-blur-sm">
             <p className="text-lg md:text-xl leading-relaxed mb-6">
               Transparencia radical: <strong className="text-action">No somos una caridad.</strong>
             </p>
             <p className="text-gray-300 leading-relaxed mb-6">
-              Nuestro negocio es venderte nuestra suscripción mensual de Inteligencia Artificial. Pero nos dimos cuenta de un problema gigante: 
+              Nuestro negocio es venderte nuestra suscripción mensual de Inteligencia Artificial. Pero nos dimos cuenta de un problema gigante:
               la mayoría de los contratistas HVAC tienen sitios web lentos, feos o que no convierten.
             </p>
             <p className="text-gray-300 leading-relaxed mb-8">
               Si conectamos nuestra IA a una web mala, no funciona. Así que decidimos eliminar el problema de raíz. <strong className="text-white">Nosotros asumimos el costo de construirte una web premium de alta conversión (valorada en $3,500).</strong> Tú solo pagas la suscripción mensual del software que te trae los clientes.
             </p>
-            
+
             <div className="flex flex-col md:flex-row gap-4 justify-center items-center pt-6 border-t border-white/10">
               <div className="flex items-center gap-2 text-sm font-bold">
                 <CheckCircle2 className="text-action" size={20} />
@@ -325,19 +350,22 @@ export default function App() {
               </div>
               <ul className="space-y-4 mb-8">
                 <li className="flex gap-3 text-gray-700">
-                  <CheckCircle2 size={20} className="text-green-500 shrink-0" />
+                  <CheckCircle2 size={20} className="text-green-500 shrink-0" aria-hidden="true" />
                   <span>Web Premium GRATIS</span>
                 </li>
                 <li className="flex gap-3 text-gray-700">
-                  <CheckCircle2 size={20} className="text-green-500 shrink-0" />
+                  <CheckCircle2 size={20} className="text-green-500 shrink-0" aria-hidden="true" />
                   <span>Hosting & Mantenimiento</span>
                 </li>
                 <li className="flex gap-3 text-gray-700 font-bold">
-                  <CheckCircle2 size={20} className="text-green-500 shrink-0" />
+                  <CheckCircle2 size={20} className="text-green-500 shrink-0" aria-hidden="true" />
                   <span>Missed Call Text-Back</span>
                 </li>
               </ul>
-              <button className="w-full py-4 rounded-xl font-bold text-authority border-2 border-authority hover:bg-authority hover:text-white transition-colors">
+              <button
+                className="w-full py-4 rounded-xl font-bold text-authority border-2 border-authority hover:bg-authority hover:text-white hover:scale-105 active:scale-95 focus-visible:ring-2 focus-visible:ring-authority focus-visible:ring-offset-2 transition-all duration-200"
+                aria-label="Seleccionar plan El Salvavidas"
+              >
                 Seleccionar Plan
               </button>
             </div>
@@ -354,23 +382,26 @@ export default function App() {
               </div>
               <ul className="space-y-4 mb-8">
                 <li className="flex gap-3 text-white">
-                  <CheckCircle2 size={20} className="text-action shrink-0" />
+                  <CheckCircle2 size={20} className="text-action shrink-0" aria-hidden="true" />
                   <span>Web Premium GRATIS</span>
                 </li>
                 <li className="flex gap-3 text-white">
-                  <CheckCircle2 size={20} className="text-action shrink-0" />
+                  <CheckCircle2 size={20} className="text-action shrink-0" aria-hidden="true" />
                   <span>Hosting & Mantenimiento</span>
                 </li>
                 <li className="flex gap-3 text-white">
-                  <CheckCircle2 size={20} className="text-action shrink-0" />
+                  <CheckCircle2 size={20} className="text-action shrink-0" aria-hidden="true" />
                   <span>Missed Call Text-Back</span>
                 </li>
                 <li className="flex gap-3 text-white font-bold">
-                  <CheckCircle2 size={20} className="text-action shrink-0" />
+                  <CheckCircle2 size={20} className="text-action shrink-0" aria-hidden="true" />
                   <span>AI Chatbot (Clasificación)</span>
                 </li>
               </ul>
-              <button className="w-full py-4 rounded-xl font-black text-authority bg-action hover:bg-orange-400 transition-colors shadow-[0_0_15px_rgba(249,152,32,0.5)]">
+              <button
+                className="w-full py-4 rounded-xl font-black text-authority bg-action hover:bg-orange-400 hover:scale-105 active:scale-95 focus-visible:ring-2 focus-visible:ring-action focus-visible:ring-offset-2 transition-all duration-200 shadow-[0_0_15px_rgba(249,152,32,0.5)]"
+                aria-label="Seleccionar plan Beta Partner"
+              >
                 Quiero Ser Partner
               </button>
             </div>
@@ -384,23 +415,26 @@ export default function App() {
               </div>
               <ul className="space-y-4 mb-8">
                 <li className="flex gap-3 text-gray-700">
-                  <CheckCircle2 size={20} className="text-green-500 shrink-0" />
+                  <CheckCircle2 size={20} className="text-green-500 shrink-0" aria-hidden="true" />
                   <span>Todo lo de Beta Partner</span>
                 </li>
                 <li className="flex gap-3 text-gray-700 font-bold">
-                  <CheckCircle2 size={20} className="text-green-500 shrink-0" />
+                  <CheckCircle2 size={20} className="text-green-500 shrink-0" aria-hidden="true" />
                   <span>Automatización de Emails</span>
                 </li>
                 <li className="flex gap-3 text-gray-700 font-bold">
-                  <CheckCircle2 size={20} className="text-green-500 shrink-0" />
+                  <CheckCircle2 size={20} className="text-green-500 shrink-0" aria-hidden="true" />
                   <span>Sistema de Reseñas Google</span>
                 </li>
                 <li className="flex gap-3 text-gray-700 font-bold">
-                  <CheckCircle2 size={20} className="text-green-500 shrink-0" />
+                  <CheckCircle2 size={20} className="text-green-500 shrink-0" aria-hidden="true" />
                   <span>Reactivación de Clientes</span>
                 </li>
               </ul>
-              <button className="w-full py-4 rounded-xl font-bold text-authority border-2 border-authority hover:bg-authority hover:text-white transition-colors">
+              <button
+                className="w-full py-4 rounded-xl font-bold text-authority border-2 border-authority hover:bg-authority hover:text-white hover:scale-105 active:scale-95 focus-visible:ring-2 focus-visible:ring-authority focus-visible:ring-offset-2 transition-all duration-200"
+                aria-label="Seleccionar plan Dominación Total"
+              >
                 Dominar Mi Ciudad
               </button>
             </div>
@@ -412,14 +446,14 @@ export default function App() {
       <section className="py-16 px-4 bg-white border-t border-gray-200">
         <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
           <div className="bg-green-50 border border-green-200 p-8 rounded-2xl flex items-start gap-4">
-            <ShieldCheck size={40} className="text-green-600 shrink-0" />
+            <ShieldCheck size={40} className="text-green-600 shrink-0" aria-hidden="true" />
             <div>
               <h4 className="font-bold text-xl text-dark mb-2">Garantía "2 Trabajos"</h4>
               <p className="text-gray-700">Si nuestro sistema no te consigue al menos 2 trabajos en los primeros 30 días, te damos el siguiente mes completamente GRATIS.</p>
             </div>
           </div>
           <div className="bg-red-50 border border-red-200 p-8 rounded-2xl flex items-start gap-4">
-            <MapPin size={40} className="text-red-600 shrink-0" />
+            <MapPin size={40} className="text-red-600 shrink-0" aria-hidden="true" />
             <div>
               <h4 className="font-bold text-xl text-dark mb-2">Exclusividad Territorial</h4>
               <p className="text-gray-700">Solo trabajamos con <strong className="text-red-700">1 contratista HVAC por ciudad</strong>. Si tu competencia toma tu zona primero, quedas fuera.</p>
@@ -437,16 +471,22 @@ export default function App() {
           <p className="text-xl text-gray-300 mb-10">
             Ingresa tu código postal para verificar si tu territorio aún está disponible.
           </p>
-          
+
           <form className="bg-white p-2 rounded-2xl flex flex-col md:flex-row gap-2 max-w-lg mx-auto shadow-2xl" onSubmit={(e) => e.preventDefault()}>
-            <input 
-              type="text" 
-              placeholder="Tu Código Postal (Ej. 75001)" 
-              className="flex-1 px-6 py-4 text-dark font-bold text-lg rounded-xl focus:outline-none focus:ring-2 focus:ring-action"
+            <label htmlFor="zip" className="sr-only">Tu Código Postal</label>
+            <input
+              id="zip"
+              type="text"
+              placeholder="Tu Código Postal (Ej. 75001)"
+              className="flex-1 px-6 py-4 text-dark font-bold text-lg rounded-xl focus:outline-none focus:ring-2 focus:ring-action transition-shadow duration-200"
               required
             />
-            <button type="submit" className="bg-action text-authority font-black px-8 py-4 rounded-xl hover:bg-orange-400 transition-colors flex items-center justify-center gap-2">
-              Verificar <ArrowRight size={20} />
+            <button
+              type="submit"
+              className="bg-action text-authority font-black px-8 py-4 rounded-xl hover:bg-orange-400 hover:scale-105 active:scale-95 focus-visible:ring-2 focus-visible:ring-action focus-visible:ring-offset-2 transition-all duration-200 flex items-center justify-center gap-2"
+              aria-label="Verificar disponibilidad del territorio"
+            >
+              Verificar <ArrowRight size={20} aria-hidden="true" />
             </button>
           </form>
           <p className="mt-4 text-sm text-gray-400 flex items-center justify-center gap-2">
