@@ -723,38 +723,101 @@ export default function App() {
 }
 
 // ═════════════════════════════════════════════════════════════════════
-//  WhatsApp Phone Mockup
+//  WhatsApp Phone Mockup — marco realista con scroll interno
 // ═════════════════════════════════════════════════════════════════════
 function PhoneMockup() {
-  const messages = [
-    { from: 'cli', msg: 'buenas, me mandas 2 pollos enteros y unas alitas?' },
-    { from: 'bot', msg: '¡Hola! 👋\n\n🍗 2 Pollos enteros — S/ 59.90\n🔥 Alitas BBQ (500g) — S/ 24.90\n\n💰 *Total: S/ 84.80*\n¿Delivery o recojo?' },
-    { from: 'cli', msg: 'delivery' },
-    { from: 'bot', msg: '📍 ¿Tu dirección?' },
-    { from: 'cli', msg: 'Av. Grau 450, Piura' },
-    { from: 'bot', msg: '✅ *Pedido #247 confirmado*\nPaga por Yape 9xx·xxx·xxx\n\n⏱ Entrega ~35 min' },
+  const messages: Array<{ from: 'cli' | 'bot'; msg: string; time: string }> = [
+    { from: 'cli', msg: 'buenas, me mandas 2 pollos enteros y unas alitas?', time: '9:01' },
+    { from: 'bot', msg: '¡Hola! 👋\n\n🍗 2 Pollos enteros — S/ 59.90\n🔥 Alitas BBQ (500g) — S/ 24.90\n\n💰 *Total: S/ 84.80*\n¿Delivery o recojo?', time: '9:01' },
+    { from: 'cli', msg: 'delivery', time: '9:02' },
+    { from: 'bot', msg: '📍 ¿Tu dirección?', time: '9:02' },
+    { from: 'cli', msg: 'Av. Grau 450, Piura', time: '9:02' },
+    { from: 'bot', msg: '✅ *Pedido #247 confirmado*\n\nPaga por Yape 9xx·xxx·xxx\nMonto: S/ 84.80\n\n⏱ Entrega ~35 min', time: '9:03' },
+    { from: 'cli', msg: '[📷 comprobante Yape]', time: '9:04' },
+    { from: 'bot', msg: '✅ Pago verificado — S/ 84.80\n\nTu pedido entró en preparación. Te aviso cuando salga 🛵', time: '9:04' },
+    { from: 'bot', msg: '🛵 *Tu pedido va en camino*\n\nLlega en ~15 min a Av. Grau 450.', time: '9:28' },
+    { from: 'bot', msg: '⭐ ¡Gracias por tu pedido!\n\n¿Nos ayudas con una reseña de 5 ⭐ en Google?\n→ g.page/pollerialabrasa', time: '10:45' },
   ];
+
   return (
-    <div className="w-full max-w-[320px] rounded-[2.5rem] overflow-hidden shadow-2xl border-[10px] border-[#0d1117] bg-[#ECE5DD]">
-      <div className="flex items-center gap-3 px-4 py-3" style={{ background: '#075E54' }}>
-        <div className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold" style={{ background: '#FFBF00', color: '#09264A' }}>JL</div>
-        <div>
-          <div className="text-white text-sm font-semibold">Bot JUTILABS 🤖</div>
-          <div className="text-green-200 text-[10px]">● Activo 24/7</div>
-        </div>
-      </div>
-      <div className="px-3 py-3 space-y-2 text-[11px] min-h-[380px]"
-        style={{ background: '#ECE5DD', backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4c9b8' fill-opacity='0.3'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }}>
-        {messages.map((m, i) => (
-          <div key={i} className={`flex ${m.from === 'bot' ? 'justify-end' : 'justify-start'}`}>
-            <div className="max-w-[80%] px-2.5 py-1.5 shadow-sm whitespace-pre-line"
-              style={{ background: m.from === 'bot' ? '#DCF8C6' : '#FFFFFF', color: '#111',
-                borderRadius: m.from === 'bot' ? '12px 2px 12px 12px' : '2px 12px 12px 12px' }}>
-              {m.msg}
-              {m.from === 'bot' && <span className="text-[9px] text-gray-500 ml-2 float-right mt-1">9:03 ✓✓</span>}
+    <div className="relative mx-auto w-full max-w-[320px]">
+      {/* Gradiente glow detrás del teléfono */}
+      <div className="absolute -inset-6 bg-gradient-to-tr from-[#09264A] to-[#FFBF00] opacity-25 blur-3xl rounded-[3rem] pointer-events-none"></div>
+
+      {/* Cuerpo del teléfono */}
+      <div className="relative bg-[#0d1117] border-[8px] border-[#0d1117] rounded-[3rem] shadow-2xl overflow-hidden">
+
+        {/* Notch superior */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-[#0d1117] rounded-b-2xl z-20"></div>
+
+        {/* Pantalla */}
+        <div className="bg-[#ECE5DD] rounded-[2.2rem] overflow-hidden flex flex-col h-[560px]">
+
+          {/* Status bar (iOS-like) */}
+          <div className="flex items-center justify-between px-6 pt-3 pb-1 text-[10px] font-semibold text-[#0d1117] bg-[#075E54]/0">
+            <span className="text-white">9:41</span>
+            <span className="flex items-center gap-1 text-white">
+              <span>●●●●</span>
+              <span>📶</span>
+              <span>🔋</span>
+            </span>
+          </div>
+
+          {/* Header de WhatsApp */}
+          <div className="flex items-center gap-3 px-4 py-2.5" style={{ background: '#075E54' }}>
+            <button className="text-white text-lg leading-none">‹</button>
+            <div className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold shrink-0"
+              style={{ background: '#FFBF00', color: '#09264A' }}>JL</div>
+            <div className="flex-1 min-w-0">
+              <div className="text-white text-sm font-semibold truncate">Bot JUTILABS 🤖</div>
+              <div className="text-green-200 text-[10px]">● Activo 24/7</div>
+            </div>
+            <div className="flex items-center gap-3 text-white text-sm">
+              <span>📹</span>
+              <span>📞</span>
             </div>
           </div>
-        ))}
+
+          {/* Área de mensajes con SCROLL */}
+          <div className="flex-1 overflow-y-auto px-3 py-3 space-y-2 text-[11px]"
+            style={{
+              background: '#ECE5DD',
+              backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4c9b8' fill-opacity='0.3'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"
+            }}>
+            {/* Fecha inicial */}
+            <div className="flex justify-center my-2">
+              <span className="bg-white/80 text-[9px] text-gray-600 px-2 py-0.5 rounded-md shadow-sm">HOY</span>
+            </div>
+
+            {messages.map((m, i) => (
+              <div key={i} className={`flex ${m.from === 'bot' ? 'justify-end' : 'justify-start'}`}>
+                <div className="max-w-[80%] px-2.5 py-1.5 shadow-sm whitespace-pre-line text-[11px]"
+                  style={{
+                    background: m.from === 'bot' ? '#DCF8C6' : '#FFFFFF',
+                    color: '#111',
+                    borderRadius: m.from === 'bot' ? '12px 2px 12px 12px' : '2px 12px 12px 12px'
+                  }}>
+                  {m.msg}
+                  <span className="text-[9px] text-gray-500 ml-2 float-right mt-1 inline-flex items-center gap-0.5">
+                    {m.time}
+                    {m.from === 'bot' && <span className="text-[#34B7F1]">✓✓</span>}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Footer input */}
+          <div className="flex items-center gap-2 px-2 py-2" style={{ background: '#F0F0F0' }}>
+            <div className="flex-1 bg-white rounded-full px-3 py-1.5 flex items-center gap-2 text-gray-500 text-[11px] shadow-sm">
+              <span>😊</span>
+              <span className="flex-1">Mensaje</span>
+              <span>📎</span>
+              <span>📷</span>
+            </div>
+            <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm shrink-0" style={{ background: '#075E54' }}>🎤</div>
+          </div>
+        </div>
       </div>
     </div>
   );
