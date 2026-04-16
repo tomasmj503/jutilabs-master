@@ -1,0 +1,32 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo navy -->
+  <rect width="1200" height="630" fill="#09264A"/>
+
+  <!-- Logo mark centrado -->
+  <g transform="translate(536, 140)">
+    <rect width="128" height="128" rx="28" fill="#09264A" stroke="#FFBF00" stroke-width="3"/>
+    <path
+      d="M 54 8 L 84 8 L 84 54 L 70 70 L 84 70 L 58 92 L 72 92 L 22 122 L 40 98 L 28 98 L 54 76 L 40 76 L 66 54 L 66 22 L 54 22 Z"
+      fill="#FFBF00" stroke="#0d1117" stroke-width="4"
+      stroke-linejoin="miter" stroke-miterlimit="8"
+    />
+  </g>
+
+  <!-- Wordmark -->
+  <text x="600" y="330" text-anchor="middle" font-family="'Space Grotesk', 'Inter', system-ui, sans-serif" font-weight="700" font-size="56" fill="white">
+    JUTI<tspan fill="#FFBF00">LABS</tspan>
+  </text>
+
+  <!-- Tagline -->
+  <text x="600" y="400" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-weight="400" font-size="28" fill="white" opacity="0.7">
+    Tu restaurante vende por WhatsApp.
+  </text>
+  <text x="600" y="440" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-weight="600" font-size="28" fill="#FFBF00">
+    Nosotros lo automatizamos.
+  </text>
+
+  <!-- URL -->
+  <text x="600" y="560" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-weight="500" font-size="22" fill="white" opacity="0.35">
+    jutilabs.com
+  </text>
+</svg>

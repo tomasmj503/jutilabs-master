@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- JUTILABS — Logo Full v4 (mark + wordmark) — 220x56 -->
+<svg width="220" height="56" viewBox="0 0 220 56" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="JutiLabs">
+  <rect width="56" height="56" rx="12" fill="#09264A"/>
+  <!-- Path escalado proporcionalmente (64→56 = 0.875) -->
+  <path
+    d="M 24 4 L 37 4 L 37 24 L 31 31 L 37 31 L 25 40 L 32 40 L 10 53 L 17 43 L 12 43 L 24 33 L 17 33 L 29 24 L 29 10 L 24 10 Z"
+    fill="#FFBF00"
+    stroke="#0d1117"
+    stroke-width="2"
+    stroke-linejoin="miter"
+    stroke-miterlimit="8"
+  />
+  <text x="66" y="38" font-family="'Space Grotesk', 'Inter', system-ui, sans-serif"
+    font-weight="700" font-size="26" letter-spacing="-0.5" fill="#09264A">JUTI</text>
+  <text x="130" y="38" font-family="'Space Grotesk', 'Inter', system-ui, sans-serif"
+    font-weight="700" font-size="26" letter-spacing="-0.5" fill="#FFBF00">LABS</text>
+</svg>
