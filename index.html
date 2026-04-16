@@ -20,13 +20,54 @@
     <meta name="twitter:title" content="JUTILABS — Automatización IA para alimentos en LATAM" />
     <meta name="twitter:description" content="Tu negocio vende. Pero tú no sabes cuánto ganaste ayer. Lo arreglamos en 14 días." />
 
-    <!-- Favicon -->
+    <!-- Favicons — pack completo (realfavicongenerator.net) -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/favicon.svg" />
-    <!-- TODO Fase 8: generar favicon.ico (16/32/48px) + apple-touch-icon.png (180x180) en un generador como realfavicongenerator.net -->
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <meta property="og:image" content="/og-image.svg" />
     <meta name="twitter:image" content="/og-image.svg" />
+
+    <!-- Schema.org structured data — ayuda a Google a entender qué es JUTILABS -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "JUTILABS",
+      "alternateName": "Jutilabs",
+      "url": "https://jutilabs.com",
+      "logo": "https://jutilabs.com/favicon.svg",
+      "image": "https://jutilabs.com/og-image.svg",
+      "description": "Automatización con IA para negocios de alimentos en Latinoamérica. Instalamos un asistente en tu WhatsApp que contesta pedidos, cobra y registra — sin que toques el celular.",
+      "foundingDate": "2025",
+      "founder": {
+        "@type": "Person",
+        "name": "Tom Muñoz"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bogotá",
+        "addressCountry": "CO"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+57-302-528-2411",
+        "contactType": "sales",
+        "areaServed": ["CO", "PE", "MX", "CL", "EC"],
+        "availableLanguage": "es"
+      },
+      "areaServed": [
+        { "@type": "Country", "name": "Colombia" },
+        { "@type": "Country", "name": "Perú" },
+        { "@type": "Country", "name": "México" },
+        { "@type": "Country", "name": "Chile" },
+        { "@type": "Country", "name": "Ecuador" }
+      ],
+      "sameAs": []
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>

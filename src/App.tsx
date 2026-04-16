@@ -143,7 +143,7 @@ function Eyebrow({ children, onDark = false }: { children: React.ReactNode; onDa
 function FAQItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="border border-[#E8EAED] rounded-xl overflow-hidden bg-white card-hover">
+    <div className="border border-[#E8EAED] rounded-xl overflow-hidden bg-white">
       <button
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between p-5 text-left hover:bg-[#F5F6F7] transition-colors"
@@ -198,12 +198,12 @@ export default function App() {
   ];
 
   const faqs = [
-    { q: '¿Esto reemplaza a Rappi o iFood?', a: 'No. Rappi te consigue clientes nuevos, eso sirve. Lo que automatizamos son los clientes que ya son tuyos — los que te escriben directo al WhatsApp. Esos pedidos no pagan comisión, y son los que hoy atiendes a mano.' },
-    { q: '¿Esto reemplaza a mi gente?', a: 'No. Los libera de anotar pedidos a mano para que hagan lo que sí importa: cocinar, despachar, atender bien. Tu asistente es la base; tu equipo es la operación.' },
-    { q: '¿Qué pasa si el asistente se equivoca con un pedido?', a: 'Lo ves todo en tu celular antes de que salga. Si algo no cuadra, pasa al operador humano. En la práctica, 99 de cada 100 pedidos salen bien solos.' },
     { q: '¿Tengo que cambiar mi WhatsApp o usar una app nueva?', a: 'Nada. Tu asistente corre sobre tu mismo WhatsApp Business. Tus clientes siguen escribiendo al número de siempre. No se enteran del cambio.' },
     { q: '¿Cuánto tiempo tarda en andar?', a: 'Dos semanas. Armamos tu carta, precios y métodos de pago, probamos contigo, y lanzamos. Tu operación no se detiene ni un día.' },
+    { q: '¿Esto reemplaza a mi gente?', a: 'No. Los libera de anotar pedidos a mano para que hagan lo que sí importa: cocinar, despachar, atender bien. Tu asistente es la base; tu equipo es la operación.' },
+    { q: '¿Qué pasa si el asistente se equivoca con un pedido?', a: 'Lo ves todo en tu celular antes de que salga. Si algo no cuadra, pasa al operador humano. En la práctica, 99 de cada 100 pedidos salen bien solos.' },
     { q: '¿Funciona en mi país?', a: 'Sí. Trabajamos en Colombia, Perú, México, Chile y Ecuador. Tu asistente se adapta a tu moneda, tus métodos de pago (Yape, Nequi, Plin, Daviplata) y la forma de hablar de tu país.' },
+    { q: '¿Esto reemplaza a Rappi o iFood?', a: 'No. Rappi te consigue clientes nuevos, eso sirve. Lo que automatizamos son los clientes que ya son tuyos — los que te escriben directo al WhatsApp. Esos pedidos no pagan comisión, y son los que hoy atiendes a mano.' },
     { q: '¿Necesito computadora o POS?', a: 'No. Todo se maneja desde tu celular. Si ya tienes un POS, lo conectamos (plan Enterprise).' },
     { q: '¿Y si mi WhatsApp se cae?', a: 'Usamos la WhatsApp Business Cloud API oficial de Meta — la misma que usan las empresas grandes. 99.9% de disponibilidad.' },
   ];
@@ -228,7 +228,7 @@ export default function App() {
           <div>
             <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-3 md:px-4 py-1.5 rounded-full text-[11px] md:text-xs font-medium mb-6 max-w-full">
               <span className="w-2 h-2 bg-[#FFBF00] rounded-full animate-pulse shrink-0"></span>
-              <span className="truncate">Pollerías · Distribuidoras · Carnicerías · Panaderías</span>
+              <span className="truncate">Restaurantes · Distribuidoras · Carnicerías · Panaderías</span>
             </div>
 
             <h1 className="text-[34px] sm:text-5xl md:text-6xl font-bold mb-6 leading-[1.1]">
@@ -237,8 +237,7 @@ export default function App() {
             </h1>
 
             <p className="text-base md:text-lg text-white/70 mb-8 max-w-xl leading-relaxed">
-              Te ponemos un asistente dentro de tu mismo WhatsApp. Contesta los pedidos,
-              cobra por Yape o Nequi, y te deja todo registrado.
+              Te ponemos un asistente en tu WhatsApp.
               <span className="text-white font-semibold"> Tú solo preparas.</span>
             </p>
 
@@ -247,7 +246,7 @@ export default function App() {
               <ArrowRight size={20} />
             </Button>
             <p className="mt-4 text-sm text-white/70">
-              Diagnóstico gratis · Sin PowerPoint · Sin compromiso
+              Diagnóstico gratis · Sin compromiso · Piloto 2 semanas gratis
             </p>
           </div>
 
@@ -480,9 +479,9 @@ export default function App() {
           {[
             { day: 'Día 1', title: 'Entra a trabajar', desc: 'Tu asistente contesta su primer pedido. Lo ves aparecer en tu celular sin haber hecho nada.' },
             { day: 'Día 7', title: 'Ves tu primera semana completa', desc: 'Sabes cuánto vendiste, qué día entró más plata, por dónde pagaron. Sin abrir una libreta.' },
-            { day: 'Día 14', title: 'Dejas el celular en la mesa', desc: 'Por primera vez en años, te sientas a cenar sin interrumpir cada 5 minutos. El asistente atiende todo.' },
+            { day: 'Día 14', title: 'Tu asistente ya maneja los pedidos solo', desc: 'Entiende los mensajes, cobra y registra sin que tengas que revisar cada uno. Supervisas desde tu celular si quieres.' },
             { day: 'Día 30', title: 'Empiezas a ver el negocio', desc: 'Qué producto te deja más, qué cliente vuelve cada semana, a qué hora vendes más. Decides con datos, no con memoria.' },
-            { day: 'Día 60', title: 'Creces sin contratar a nadie', desc: 'Los recordatorios automáticos, las promos por WhatsApp y las reseñas en Google ya están trabajando solas — para ti.' },
+            { day: 'Día 60', title: 'Los pedidos, las reseñas y los recordatorios ya corren solos', desc: 'Clientes que vuelven por promos automáticas. Reseñas en Google que llegan sin pedirlas. Todo sin contratar a nadie.' },
           ].map((d, i) => (
             <div key={d.day} className="flex gap-6 pb-8 relative">
               {/* Línea vertical */}
@@ -515,7 +514,7 @@ export default function App() {
 
         <div className="grid md:grid-cols-3 gap-6 items-stretch">
           {[
-            { name: 'Starter', tagline: 'Para arrancar rápido y empezar a ver resultados.', price: '$80', priceRange: '–120 USD/mes', setup: 'Setup: $400–600 USD', features: ['Tu asistente en WhatsApp 24/7','Catálogo, pedido, pago, despacho y reseña','Registra gastos por voz o foto','Dashboard en tu celular','Reportes automáticos en Sheets','Te atendemos por WhatsApp'], cta: 'Empezar', popular: false },
+            { name: 'Starter', tagline: 'Para arrancar rápido y empezar a ver resultados.', price: '$80', priceRange: '–120 USD/mes', setup: 'Setup: $400–600 USD', features: ['Tu asistente en WhatsApp 24/7','Catálogo, pedido, pago, despacho y reseña','Registra gastos por voz o foto','Dashboard en tu celular','Reportes automáticos en Sheets','Te atendemos por WhatsApp'], cta: 'Quiero arrancar', popular: false },
             { name: 'Pro', tagline: 'Para crecer sin tener que contratar más gente.', price: '$200', priceRange: '–350 USD/mes', setup: 'Setup: $1,200–1,800 USD', features: ['Todo lo del Starter, y además:','Campañas de WhatsApp a tus clientes','Llamadas perdidas se convierten en pedido','Cobro automático a los que te deben','Control de mesas y caja (restaurantes)','Lista de precios del día automática'], cta: 'Quiero el Pro', popular: true },
             { name: 'Enterprise', tagline: 'Para operaciones grandes que necesitan todo integrado.', price: '$400', priceRange: '–600 USD/mes', setup: 'Setup: $2,500–4,000 USD', features: ['Todo lo del Pro, y además:','Pedidos B2B mayoristas','Trazabilidad en tiempo real del pedido','Facturación electrónica','Conexión a tu POS actual','Múltiples usuarios y sucursales'], cta: 'Hablar conmigo', popular: false },
           ].map((p) => (
@@ -547,8 +546,13 @@ export default function App() {
           ))}
         </div>
 
+        {/* Urgencia honesta — escasez real */}
+        <p className="mt-10 text-center text-sm text-white/60 max-w-xl mx-auto">
+          Tomo máximo <span className="text-[#FFBF00] font-semibold">3 clientes nuevos al mes</span> para poder instalar todo bien, contigo.
+        </p>
+
         {/* Comparación: empleado real vs tu asistente */}
-        <div className="mt-16 max-w-4xl mx-auto grid md:grid-cols-2 gap-6">
+        <div className="mt-10 max-w-4xl mx-auto grid md:grid-cols-2 gap-6">
           <div className="bg-white/5 border border-white/10 rounded-2xl p-7">
             <div className="label-caps text-white/50 mb-3">Contratar a alguien</div>
             <ul className="space-y-2.5 text-sm text-white/80">
@@ -656,6 +660,7 @@ export default function App() {
                   className="w-full border border-[#E8EAED] rounded-xl px-4 py-3 text-[#1C2228] focus:outline-none focus:ring-2 focus:ring-[#09264A]/20 focus:border-[#09264A] transition bg-white"
                 >
                   <option value="">Selecciona tu negocio</option>
+                  <option>Pollería</option>
                   <option>Restaurante</option>
                   <option>Distribuidora de alimentos</option>
                   <option>Carnicería / Salsamentaría</option>
@@ -680,14 +685,31 @@ export default function App() {
       </main>
 
       {/* ══ FOOTER — navy deep ══ */}
-      <footer className="bg-[#061935] py-12 px-6 text-center">
-        <Logo size="sm" onDark />
-        <p className="text-white/60 text-sm mt-5">Automatización IA para negocios de alimentos en Latinoamérica</p>
-        <p className="text-white/30 text-xs mt-2">Bogotá, Colombia · Servicio en toda LATAM · Tom Muñoz, Fundador</p>
-        <a href={`https://wa.me/573025282411`} target="_blank" rel="noreferrer"
-          className="inline-flex items-center gap-2 mt-6 text-[#FFBF00] text-sm font-semibold hover:underline">
-          <MessageSquare size={16} /> +57 302 528 2411
-        </a>
+      <footer className="bg-[#061935] py-12 px-6">
+        <div className="max-w-5xl mx-auto">
+          {/* Bloque principal */}
+          <div className="text-center">
+            <div className="inline-block"><Logo size="sm" onDark /></div>
+            <p className="text-white/60 text-sm mt-5">Automatización IA para negocios de alimentos en Latinoamérica</p>
+            <p className="text-white/30 text-xs mt-2">Bogotá, Colombia · Servicio en toda LATAM · Tom Muñoz, Fundador</p>
+            <a href={`https://wa.me/573025282411`} target="_blank" rel="noreferrer"
+              className="inline-flex items-center gap-2 mt-6 text-[#FFBF00] text-sm font-semibold hover:underline">
+              <MessageSquare size={16} /> +57 302 528 2411
+            </a>
+          </div>
+
+          {/* Línea legal al pie */}
+          <div className="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/40">
+            <div>© {new Date().getFullYear()} JUTILABS. Todos los derechos reservados.</div>
+            <div className="flex items-center gap-4">
+              <a href="#contacto" className="hover:text-white/70 transition-colors">Contacto</a>
+              <span className="text-white/20">·</span>
+              <a href="/privacidad" className="hover:text-white/70 transition-colors">Privacidad</a>
+              <span className="text-white/20">·</span>
+              <a href="/terminos" className="hover:text-white/70 transition-colors">Términos</a>
+            </div>
+          </div>
+        </div>
       </footer>
 
       {/* ══ STICKY MOBILE CTA ══ */}
