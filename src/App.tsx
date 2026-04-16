@@ -139,6 +139,63 @@ function Eyebrow({ children, onDark = false }: { children: React.ReactNode; onDa
   );
 }
 
+// ─── Mini Form — versión compacta del formulario ───────────────────────
+function MiniForm({ className = '' }: { className?: string }) {
+  const [data, setData] = useState({ nombre: '', whatsapp: '' });
+  const [loading, setLoading] = useState(false);
+  const [sent, setSent] = useState(false);
+
+  const submit = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      await fetch('https://formspree.io/f/xlgagwbb', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ ...data, _subject: `Nuevo lead (mini form) — ${data.nombre}` }),
+      });
+    } catch (_) {}
+    setSent(true);
+    setLoading(false);
+    const msg = encodeURIComponent(
+      `Hola Tom, me registré en el sitio de JUTILABS.\n\n👤 ${data.nombre}\n📱 ${data.whatsapp}\n\nQuiero automatizar mis pedidos.`
+    );
+    window.open(`https://wa.me/573025282411?text=${msg}`, '_blank');
+  };
+
+  if (sent) {
+    return (
+      <div className={`bg-[#FFBF00]/10 border border-[#FFBF00]/40 rounded-2xl p-6 text-center ${className}`}>
+        <div className="text-3xl mb-2">✅</div>
+        <p className="text-white font-semibold">¡Listo! Te abrimos WhatsApp para coordinar.</p>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={submit} className={`bg-white rounded-2xl p-5 shadow-xl flex flex-col sm:flex-row gap-3 ${className}`}>
+      <input
+        type="text" required placeholder="Tu nombre"
+        value={data.nombre}
+        onChange={(e) => setData({ ...data, nombre: e.target.value })}
+        className="flex-1 border border-[#E8EAED] rounded-xl px-4 py-3 text-[#1C2228] placeholder:text-[#B5BBC2] focus:outline-none focus:ring-2 focus:ring-[#09264A]/20 focus:border-[#09264A] transition text-sm"
+      />
+      <input
+        type="tel" required placeholder="Tu WhatsApp"
+        value={data.whatsapp}
+        onChange={(e) => setData({ ...data, whatsapp: e.target.value })}
+        className="flex-1 border border-[#E8EAED] rounded-xl px-4 py-3 text-[#1C2228] placeholder:text-[#B5BBC2] focus:outline-none focus:ring-2 focus:ring-[#09264A]/20 focus:border-[#09264A] transition text-sm"
+      />
+      <button
+        type="submit" disabled={loading}
+        className="bg-[#FFBF00] text-[#09264A] font-bold px-6 py-3 rounded-xl hover:bg-[#FFD033] transition-all shadow-[0_4px_20px_-2px_rgb(255_191_0_/_0.35)] disabled:opacity-60 whitespace-nowrap text-sm"
+      >
+        {loading ? 'Enviando...' : 'Hablar con Tom'}
+      </button>
+    </form>
+  );
+}
+
 // ─── FAQ Item ──────────────────────────────────────────────────────────
 function FAQItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
@@ -165,7 +222,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
 //  APP
 // ═════════════════════════════════════════════════════════════════════
 export default function App() {
-  const [formData, setFormData] = useState({ nombre: '', whatsapp: '', negocio: '' });
+  const [formData, setFormData] = useState({ nombre: '', whatsapp: '' });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -182,7 +239,7 @@ export default function App() {
     setSubmitted(true);
     setLoading(false);
     const msg = encodeURIComponent(
-      `Hola Tom, me registré en el sitio de JUTILABS.\n\n👤 ${formData.nombre}\n📱 ${formData.whatsapp}\n🏪 ${formData.negocio}\n\nQuiero automatizar mis pedidos.`
+      `Hola Tom, me registré en el sitio de JUTILABS.\n\n👤 ${formData.nombre}\n📱 ${formData.whatsapp}\n\nQuiero automatizar mis pedidos.`
     );
     window.open(`https://wa.me/573025282411?text=${msg}`, '_blank');
   };
@@ -246,7 +303,10 @@ export default function App() {
               <ArrowRight size={20} />
             </Button>
             <p className="mt-4 text-sm text-white/70">
-              Diagnóstico gratis · Sin compromiso · Piloto 2 semanas gratis
+              Diagnóstico gratis · 15 minutos · Sin compromiso
+            </p>
+            <p className="mt-2 text-sm text-[#FFBF00] font-semibold">
+              🚀 Piloto 2 semanas gratis
             </p>
           </div>
 
@@ -346,6 +406,12 @@ export default function App() {
           <p className="text-white font-semibold text-base md:text-xl mt-5 max-w-2xl mx-auto">
             Y cuesta menos que un medio tiempo.
           </p>
+
+          {/* Mini form — captura mientras el dolor está fresco */}
+          <div className="mt-10 max-w-2xl mx-auto">
+            <p className="text-white/60 text-sm mb-3">Déjame tus datos y te escribo por WhatsApp.</p>
+            <MiniForm />
+          </div>
         </Reveal>
       </Section>
 
@@ -514,9 +580,9 @@ export default function App() {
 
         <div className="grid md:grid-cols-3 gap-6 items-stretch">
           {[
-            { name: 'Starter', tagline: 'Para arrancar rápido y empezar a ver resultados.', price: '$80', priceRange: '–120 USD/mes', setup: 'Setup: $400–600 USD', features: ['Tu asistente en WhatsApp 24/7','Catálogo, pedido, pago, despacho y reseña','Registra gastos por voz o foto','Dashboard en tu celular','Reportes automáticos en Sheets','Te atendemos por WhatsApp'], cta: 'Quiero arrancar', popular: false },
-            { name: 'Pro', tagline: 'Para crecer sin tener que contratar más gente.', price: '$200', priceRange: '–350 USD/mes', setup: 'Setup: $1,200–1,800 USD', features: ['Todo lo del Starter, y además:','Campañas de WhatsApp a tus clientes','Llamadas perdidas se convierten en pedido','Cobro automático a los que te deben','Control de mesas y caja (restaurantes)','Lista de precios del día automática'], cta: 'Quiero el Pro', popular: true },
-            { name: 'Enterprise', tagline: 'Para operaciones grandes que necesitan todo integrado.', price: '$400', priceRange: '–600 USD/mes', setup: 'Setup: $2,500–4,000 USD', features: ['Todo lo del Pro, y además:','Pedidos B2B mayoristas','Trazabilidad en tiempo real del pedido','Facturación electrónica','Conexión a tu POS actual','Múltiples usuarios y sucursales'], cta: 'Hablar conmigo', popular: false },
+            { name: 'Starter', tagline: 'Para arrancar rápido y empezar a ver resultados.', idealFor: 'Ideal si recibes hasta 30 pedidos al día', price: '$80', priceRange: '–120 USD/mes', setup: 'Setup: $400–600 USD', features: ['Tu asistente en WhatsApp 24/7','Catálogo, pedido, pago, despacho y reseña','Registra gastos por voz o foto','Dashboard en tu celular','Reportes automáticos en Sheets','Te atendemos por WhatsApp'], cta: 'Quiero arrancar', popular: false },
+            { name: 'Pro', tagline: 'Para crecer sin tener que contratar más gente.', idealFor: 'Para negocios con 30–100 pedidos que quieren crecer', price: '$200', priceRange: '–350 USD/mes', setup: 'Setup: $1,200–1,800 USD', features: ['Todo lo del Starter, y además:','Campañas de WhatsApp a tus clientes','Llamadas perdidas se convierten en pedido','Cobro automático a los que te deben','Control de mesas y caja (restaurantes)','Lista de precios del día automática'], cta: 'Quiero el Pro', popular: true },
+            { name: 'Enterprise', tagline: 'Para operaciones grandes que necesitan todo integrado.', idealFor: 'Múltiples sucursales o ventas B2B', price: '$400', priceRange: '–600 USD/mes', setup: 'Setup: $2,500–4,000 USD', features: ['Todo lo del Pro, y además:','Pedidos B2B mayoristas','Trazabilidad en tiempo real del pedido','Facturación electrónica','Conexión a tu POS actual','Múltiples usuarios y sucursales'], cta: 'Hablar conmigo', popular: false },
           ].map((p) => (
             <div key={p.name} className={`rounded-2xl p-8 relative flex flex-col ${p.popular ? 'bg-white text-[#1C2228] shadow-2xl md:-translate-y-3 border-2 border-[#FFBF00]' : 'bg-white/5 border border-white/10'}`}>
               {p.popular && (
@@ -542,6 +608,9 @@ export default function App() {
               <a href="#contacto" className={`block text-center py-3 rounded-xl font-bold transition-all ${p.popular ? 'bg-[#FFBF00] text-[#09264A] hover:bg-[#FFD033] shadow-[0_4px_20px_-2px_rgb(255_191_0_/_0.35)]' : 'border-2 border-white/30 text-white hover:bg-white hover:text-[#09264A]'}`}>
                 {p.cta}
               </a>
+              <p className={`text-xs text-center mt-4 ${p.popular ? 'text-[#8A9197]' : 'text-white/50'}`}>
+                {p.idealFor}
+              </p>
             </div>
           ))}
         </div>
@@ -650,25 +719,6 @@ export default function App() {
                   />
                 </div>
               ))}
-              <div>
-                <label htmlFor="field-negocio" className="block text-sm font-semibold text-[#1C2228] mb-1.5">Tipo de negocio</label>
-                <select
-                  id="field-negocio"
-                  aria-label="Tipo de negocio"
-                  required value={formData.negocio}
-                  onChange={(e) => setFormData({ ...formData, negocio: e.target.value })}
-                  className="w-full border border-[#E8EAED] rounded-xl px-4 py-3 text-[#1C2228] focus:outline-none focus:ring-2 focus:ring-[#09264A]/20 focus:border-[#09264A] transition bg-white"
-                >
-                  <option value="">Selecciona tu negocio</option>
-                  <option>Pollería</option>
-                  <option>Restaurante</option>
-                  <option>Distribuidora de alimentos</option>
-                  <option>Carnicería / Salsamentaría</option>
-                  <option>Panadería</option>
-                  <option>Tienda de abarrotes</option>
-                  <option>Otro negocio de alimentos</option>
-                </select>
-              </div>
 
               <Button type="submit" variant="primary" size="lg" disabled={loading} className="w-full">
                 {loading ? 'Enviando...' : <><Send size={18} /> Agendar 15 min con Tom</>}
@@ -718,6 +768,20 @@ export default function App() {
           Agenda 15 min conmigo
         </Button>
       </div>
+
+      {/* ══ WHATSAPP FAB — fijo esquina inferior derecha ══ */}
+      <a
+        href={`https://wa.me/573025282411?text=${encodeURIComponent('Hola Tom, vi el sitio de JUTILABS y quiero saber más.')}`}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Escríbenos por WhatsApp"
+        className="fixed bottom-24 md:bottom-6 right-5 z-40 w-14 h-14 rounded-full flex items-center justify-center shadow-[0_8px_24px_rgba(37,211,102,0.45)] hover:scale-110 transition-transform"
+        style={{ background: '#25D366' }}
+      >
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M16 .396C7.164.396 0 7.56 0 16.396c0 2.813.74 5.556 2.144 7.976L.05 31.76a.5.5 0 0 0 .617.617l7.44-2.086A15.92 15.92 0 0 0 16 32.396c8.836 0 16-7.164 16-16s-7.164-16-16-16zm0 29.208c-2.524 0-4.996-.684-7.152-1.98l-.512-.304-4.416 1.236 1.236-4.296-.336-.544A13.19 13.19 0 0 1 2.8 16.396c0-7.28 5.92-13.2 13.2-13.2s13.2 5.92 13.2 13.2-5.92 13.208-13.2 13.208zm7.24-9.896c-.396-.2-2.348-1.156-2.712-1.288-.364-.132-.628-.2-.892.2-.264.396-1.024 1.288-1.256 1.552-.232.264-.464.296-.86.1-.396-.2-1.672-.616-3.184-1.964-1.176-1.048-1.968-2.34-2.2-2.736-.232-.396-.024-.612.172-.808.176-.176.396-.464.592-.692.2-.232.264-.396.396-.66.132-.264.064-.492-.032-.692-.1-.196-.892-2.148-1.22-2.94-.32-.772-.648-.668-.892-.68-.232-.012-.492-.012-.752-.012a1.45 1.45 0 0 0-1.048.492c-.364.396-1.384 1.352-1.384 3.296 0 1.944 1.416 3.82 1.616 4.084.2.264 2.784 4.248 6.748 5.956.944.408 1.684.652 2.26.836.948.3 1.812.26 2.496.156.76-.112 2.348-.956 2.68-1.88.332-.924.332-1.716.232-1.88-.096-.164-.36-.264-.752-.464z"/>
+        </svg>
+      </a>
     </div>
   );
 }
