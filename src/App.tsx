@@ -529,6 +529,23 @@ export default function App() {
         </div>
       </Section>
 
+      {/* ══ DASHBOARD — navyDeep ══ */}
+      <Section tone="navyDeep">
+        <Reveal className="text-center max-w-2xl mx-auto mb-10">
+          <Eyebrow onDark>Tu panel en tiempo real</Eyebrow>
+          <h2 className="text-[32px] sm:text-4xl md:text-5xl font-bold mb-4">
+            Así se ve tu panel en tiempo real
+          </h2>
+          <p className="text-white/60">
+            Cada pedido entra acá. Lo ves, lo marcas listo, se despacha.
+            Todo desde tu celular.
+          </p>
+        </Reveal>
+        <Reveal>
+          <DashboardMockup />
+        </Reveal>
+      </Section>
+
       {/* ══ 60 DÍAS — white ══ */}
       <Section tone="white">
         <Reveal className="text-center max-w-2xl mx-auto mb-14">
@@ -782,6 +799,177 @@ export default function App() {
           <path d="M16 .396C7.164.396 0 7.56 0 16.396c0 2.813.74 5.556 2.144 7.976L.05 31.76a.5.5 0 0 0 .617.617l7.44-2.086A15.92 15.92 0 0 0 16 32.396c8.836 0 16-7.164 16-16s-7.164-16-16-16zm0 29.208c-2.524 0-4.996-.684-7.152-1.98l-.512-.304-4.416 1.236 1.236-4.296-.336-.544A13.19 13.19 0 0 1 2.8 16.396c0-7.28 5.92-13.2 13.2-13.2s13.2 5.92 13.2 13.2-5.92 13.208-13.2 13.208zm7.24-9.896c-.396-.2-2.348-1.156-2.712-1.288-.364-.132-.628-.2-.892.2-.264.396-1.024 1.288-1.256 1.552-.232.264-.464.296-.86.1-.396-.2-1.672-.616-3.184-1.964-1.176-1.048-1.968-2.34-2.2-2.736-.232-.396-.024-.612.172-.808.176-.176.396-.464.592-.692.2-.232.264-.396.396-.66.132-.264.064-.492-.032-.692-.1-.196-.892-2.148-1.22-2.94-.32-.772-.648-.668-.892-.68-.232-.012-.492-.012-.752-.012a1.45 1.45 0 0 0-1.048.492c-.364.396-1.384 1.352-1.384 3.296 0 1.944 1.416 3.82 1.616 4.084.2.264 2.784 4.248 6.748 5.956.944.408 1.684.652 2.26.836.948.3 1.812.26 2.496.156.76-.112 2.348-.956 2.68-1.88.332-.924.332-1.716.232-1.88-.096-.164-.36-.264-.752-.464z"/>
         </svg>
       </a>
+    </div>
+  );
+}
+
+// ═════════════════════════════════════════════════════════════════════
+//  Dashboard Mockup — réplica del panel real de pedidos
+// ═════════════════════════════════════════════════════════════════════
+function DashboardMockup() {
+  const orders = [
+    {
+      status: 'NUEVO', statusColor: '#F59E0B', channel: 'Delivery', channelEmoji: '🛵',
+      time: 'Ahora · 02:02 p.m.', items: [
+        { qty: '1x', name: 'Pollo a la Brasa (Medio Pollo)', price: 'S/ 32.00' },
+        { qty: '2x', name: 'Gaseosa Inca Kola 1L', price: 'S/ 32.00' },
+        { qty: '1x', name: 'Alitas (6 piezas)', note: 'Acevichadas', price: 'S/ 24.90' },
+      ],
+      total: 'S/ 88.90', payment: 'Tarjeta', paymentEmoji: '💳',
+      customer: 'María Rodríguez', phone: '985 234 789', address: 'Calle Tacna 77 #67-55',
+      action: 'PREPARAR', actionColor: '#3B82F6',
+    },
+    {
+      status: 'NUEVO', statusColor: '#F59E0B', channel: 'Delivery', channelEmoji: '🛵',
+      time: '6m · 01:56 p.m.', items: [
+        { qty: '1x', name: 'Mostrito', price: 'S/ 24.00' },
+        { qty: '1x', name: 'Pollo Broaster (2 piezas)', price: 'S/ 18.00' },
+        { qty: '1x', name: 'Gaseosa Inca Kola 1L', price: 'S/ 16.00' },
+      ],
+      total: 'S/ 58.00', payment: 'Yape', paymentEmoji: '📱',
+      customer: 'Carlos Vargas', phone: '992 556 411', address: 'Av. Grau 450, Piura',
+      action: 'PREPARAR', actionColor: '#3B82F6',
+    },
+    {
+      status: 'PREPARANDO', statusColor: '#06B6D4', channel: 'Recojo', channelEmoji: '🔥',
+      time: '10m · 01:52 p.m.', items: [
+        { qty: '1x', name: 'Pollo a la Brasa (Entero)', price: 'S/ 59.90' },
+        { qty: '1x', name: 'Alitas (6 piezas)', note: 'Sabor: BBQ', price: 'S/ 24.90' },
+      ],
+      total: 'S/ 84.80', payment: null,
+      customer: 'Lucía Mendoza', phone: '977 823 104', address: null,
+      action: 'LISTO', actionColor: '#10B981',
+    },
+    {
+      status: 'LISTO', statusColor: '#F59E0B', channel: 'Delivery', channelEmoji: '🛵',
+      time: 'Notificado 1h 51m · 12:11 p.m.', items: [
+        { qty: '1x', name: 'Alitas (6 piezas)', note: 'Sabor BBQ', price: 'S/ 24.90' },
+      ],
+      total: 'S/ 24.90', payment: 'Efectivo', paymentEmoji: '💵',
+      customer: 'Ana Castillo', phone: '963 412 887', address: 'Jr. Libertad 223',
+      action: 'DESPACHAR', actionColor: '#8B5CF6',
+    },
+  ];
+
+  return (
+    <div className="rounded-2xl overflow-hidden shadow-2xl bg-[#0d1117] border border-white/10">
+      {/* Header */}
+      <div className="flex items-center justify-between px-5 py-3 border-b border-white/10">
+        <div className="flex items-center gap-3">
+          <span className="text-[#FFBF00] font-display font-bold text-xs tracking-widest">JUTILABS</span>
+          <span className="text-white text-sm font-semibold">Tu Negocio — Panel de Pedidos</span>
+        </div>
+        <div className="flex items-center gap-2 text-xs">
+          <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+          <span className="text-green-400 font-medium">En vivo</span>
+        </div>
+      </div>
+
+      {/* Filtros de fecha */}
+      <div className="flex items-center gap-2 px-5 py-3 border-b border-white/5 overflow-x-auto">
+        {['Hoy', 'Ayer', 'Semana', 'Mes'].map((f, i) => (
+          <button key={f} className={`px-3 py-1 rounded-md text-xs whitespace-nowrap ${i === 0 ? 'bg-[#FFBF00]/10 text-[#FFBF00] border border-[#FFBF00]/30' : 'text-white/50 border border-white/10'}`}>
+            {f}
+          </button>
+        ))}
+      </div>
+
+      {/* Stats */}
+      <div className="grid grid-cols-3 md:grid-cols-6 gap-px bg-white/5 border-b border-white/5">
+        {[
+          { value: '2', label: 'NUEVOS', color: '#F59E0B' },
+          { value: '1', label: 'PREPARANDO', color: '#3B82F6' },
+          { value: '1', label: 'LISTOS/CAMINO', color: '#10B981' },
+          { value: '2', label: 'ENTREGADOS', color: '#8B5CF6' },
+          { value: 'S/ 155.70', label: 'VENTAS', color: '#FFBF00', wide: true },
+          { value: '12', label: 'TOTAL PEDIDOS', color: '#ffffff' },
+        ].map((s) => (
+          <div key={s.label} className={`bg-[#0d1117] px-4 py-3 ${s.wide ? 'col-span-1' : ''}`}>
+            <div className="font-display font-bold text-xl" style={{ color: s.color }}>{s.value}</div>
+            <div className="text-[9px] text-white/40 tracking-widest mt-0.5">{s.label}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* Tabs */}
+      <div className="flex items-center gap-1 px-5 py-3 border-b border-white/5 overflow-x-auto text-xs">
+        {[
+          { name: 'Activos', count: '4', active: true },
+          { name: 'Nuevos', count: '2' },
+          { name: 'Preparando', count: '1' },
+          { name: 'Listos', count: '1' },
+          { name: 'En camino', count: '0' },
+          { name: 'Entregados', count: '2' },
+          { name: 'Todos', count: '12' },
+        ].map((t) => (
+          <button key={t.name} className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md whitespace-nowrap ${t.active ? 'bg-[#FFBF00]/10 text-[#FFBF00] border border-[#FFBF00]/30' : 'text-white/50'}`}>
+            {t.name}
+            <span className={`text-[10px] px-1 rounded ${t.active ? 'bg-[#FFBF00]/20' : 'bg-white/10'}`}>{t.count}</span>
+          </button>
+        ))}
+      </div>
+
+      {/* Order cards grid */}
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-3 p-4 bg-[#0a0e14]">
+        {orders.map((o, i) => (
+          <div key={i} className="bg-[#0d1117] border rounded-lg overflow-hidden" style={{ borderColor: `${o.statusColor}40` }}>
+            {/* Card header */}
+            <div className="flex items-center justify-between px-3 py-2 border-b border-white/5">
+              <div className="flex items-center gap-1.5">
+                <span className="text-[9px] font-bold px-1.5 py-0.5 rounded" style={{ background: `${o.statusColor}20`, color: o.statusColor }}>
+                  {o.status}
+                </span>
+                <span className="text-[9px] text-white/60 flex items-center gap-0.5">
+                  {o.channelEmoji} {o.channel}
+                </span>
+              </div>
+              <span className="text-[9px] text-white/40">{o.time}</span>
+            </div>
+
+            {/* Items */}
+            <div className="px-3 py-2 space-y-1 border-b border-white/5">
+              {o.items.map((it, j) => (
+                <div key={j}>
+                  <div className="flex justify-between items-start text-[11px] gap-2">
+                    <div className="text-white/90 flex-1">
+                      <span className="text-white/60">{it.qty}</span> {it.name}
+                    </div>
+                    <div className="text-white/80 whitespace-nowrap">{it.price}</div>
+                  </div>
+                  {it.note && <div className="text-[10px] text-[#FFBF00]/80 italic">{it.note}</div>}
+                </div>
+              ))}
+            </div>
+
+            {/* Total + payment */}
+            <div className="px-3 py-2 border-b border-white/5">
+              <div className="flex justify-between items-center">
+                <span className="text-[11px] text-white/60">Total</span>
+                <span className="font-display font-bold text-sm" style={{ color: '#FFBF00' }}>{o.total}</span>
+              </div>
+              {o.payment && (
+                <div className="flex items-center gap-1 mt-1 text-[9px] text-white/50">
+                  <span>{o.paymentEmoji}</span>
+                  <span>{o.payment}</span>
+                </div>
+              )}
+            </div>
+
+            {/* Customer */}
+            <div className="px-3 py-2 border-b border-white/5 text-[10px]">
+              <div className="text-white/80 font-medium">{o.customer} · <span className="text-white/40">{o.phone}</span></div>
+              {o.address && <div className="text-white/50 mt-0.5">📍 {o.address}</div>}
+            </div>
+
+            {/* Action button */}
+            <div className="p-2">
+              <button className="w-full py-1.5 rounded text-[10px] font-bold text-white flex items-center justify-center gap-1" style={{ background: o.actionColor }}>
+                {o.status === 'PREPARANDO' ? '✓' : o.status === 'LISTO' ? '🛵' : '🔥'} {o.action}
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
