@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jutilabs.com/sitemap.xml

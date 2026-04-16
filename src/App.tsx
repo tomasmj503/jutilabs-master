@@ -221,6 +221,7 @@ export default function App() {
         </div>
       </header>
 
+      <main>
       {/* ══ HERO — navy ══ */}
       <Section tone="navy" className="!py-16 md:!py-32">
         <div className="grid md:grid-cols-2 gap-10 md:gap-12 items-center">
@@ -245,7 +246,7 @@ export default function App() {
               Agenda 15 min conmigo
               <ArrowRight size={20} />
             </Button>
-            <p className="mt-4 text-sm text-white/40">
+            <p className="mt-4 text-sm text-white/70">
               Diagnóstico gratis · Sin PowerPoint · Sin compromiso
             </p>
           </div>
@@ -269,7 +270,7 @@ export default function App() {
           ].map((s) => (
             <div key={s.v} className="text-center">
               <div className="font-display text-2xl font-bold text-[#09264A]">{s.v}</div>
-              <div className="text-xs text-[#8A9197] mt-0.5">{s.l}</div>
+              <div className="text-xs text-[#4A5159] mt-0.5">{s.l}</div>
             </div>
           ))}
         </div>
@@ -635,8 +636,9 @@ export default function App() {
                 { label: 'Tu WhatsApp', key: 'whatsapp', type: 'tel', placeholder: 'Ej. +57 310 000 0000' },
               ].map((f) => (
                 <div key={f.key}>
-                  <label className="block text-sm font-semibold text-[#1C2228] mb-1.5">{f.label}</label>
+                  <label htmlFor={`field-${f.key}`} className="block text-sm font-semibold text-[#1C2228] mb-1.5">{f.label}</label>
                   <input
+                    id={`field-${f.key}`}
                     type={f.type} required placeholder={f.placeholder}
                     value={(formData as any)[f.key]}
                     onChange={(e) => setFormData({ ...formData, [f.key]: e.target.value })}
@@ -645,8 +647,10 @@ export default function App() {
                 </div>
               ))}
               <div>
-                <label className="block text-sm font-semibold text-[#1C2228] mb-1.5">Tipo de negocio</label>
+                <label htmlFor="field-negocio" className="block text-sm font-semibold text-[#1C2228] mb-1.5">Tipo de negocio</label>
                 <select
+                  id="field-negocio"
+                  aria-label="Tipo de negocio"
                   required value={formData.negocio}
                   onChange={(e) => setFormData({ ...formData, negocio: e.target.value })}
                   className="w-full border border-[#E8EAED] rounded-xl px-4 py-3 text-[#1C2228] focus:outline-none focus:ring-2 focus:ring-[#09264A]/20 focus:border-[#09264A] transition bg-white"
@@ -672,6 +676,8 @@ export default function App() {
           )}
         </div>
       </Section>
+
+      </main>
 
       {/* ══ FOOTER — navy deep ══ */}
       <footer className="bg-[#061935] py-12 px-6 text-center">
@@ -723,7 +729,7 @@ function PhoneMockup() {
               style={{ background: m.from === 'bot' ? '#DCF8C6' : '#FFFFFF', color: '#111',
                 borderRadius: m.from === 'bot' ? '12px 2px 12px 12px' : '2px 12px 12px 12px' }}>
               {m.msg}
-              {m.from === 'bot' && <span className="text-[9px] text-gray-400 ml-2 float-right mt-1">9:03 ✓✓</span>}
+              {m.from === 'bot' && <span className="text-[9px] text-gray-500 ml-2 float-right mt-1">9:03 ✓✓</span>}
             </div>
           </div>
         ))}
