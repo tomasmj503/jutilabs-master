@@ -53,22 +53,24 @@ function Reveal({
 // ═════════════════════════════════════════════════════════════════════
 
 // ─── Logo ──────────────────────────────────────────────────────────────
-function Logo({ size = 'md', onDark = false }: { size?: 'sm' | 'md' | 'lg'; onDark?: boolean }) {
+function Logo({ size = 'md', onDark = false, animate = false }: { size?: 'sm' | 'md' | 'lg'; onDark?: boolean; animate?: boolean }) {
   const dims = size === 'lg' ? 44 : size === 'sm' ? 28 : 36;
   const textClass = size === 'lg' ? 'text-3xl' : size === 'sm' ? 'text-lg' : 'text-2xl';
   const wordmarkColor = onDark ? '#FFFFFF' : '#09264A';
-  const outlineWidth = size === 'sm' ? 1.5 : 2.5;
+  const outlineWidth = size === 'sm' ? 1 : 2;
   return (
-    <div className={`flex items-center gap-3 font-['Space_Grotesk'] font-bold ${textClass} select-none leading-none`}>
+    <div className={`flex items-center gap-4 font-['Space_Grotesk'] font-bold ${textClass} select-none leading-none`}>
       <svg width={dims} height={dims} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="64" height="64" rx="14" fill="#09264A" />
+        {/* Rayo más grueso: notches más anchos (de 8px a 10px), shape más ancha */}
         <path
-          d="M 27 4 L 42 4 L 42 27 L 35 35 L 42 35 L 29 46 L 36 46 L 11 61 L 20 49 L 14 49 L 27 38 L 20 38 L 33 27 L 33 11 L 27 11 Z"
+          d="M 25 4 L 44 4 L 44 26 L 35 36 L 44 36 L 29 48 L 38 48 L 10 62 L 21 49 L 13 49 L 28 37 L 19 37 L 34 26 L 34 12 L 25 12 Z"
           fill="#FFBF00" stroke="#0d1117" strokeWidth={outlineWidth}
           strokeLinejoin="miter" strokeMiterlimit={8}
+          className={animate ? 'logo-bolt' : ''}
         />
       </svg>
-      <span>
+      <span className={animate ? 'logo-wordmark' : ''}>
         <span style={{ color: wordmarkColor }}>JUTI</span>
         <span style={{ color: '#FFBF00' }}>LABS</span>
       </span>
@@ -271,7 +273,7 @@ export default function App() {
       {/* ══ HEADER ══ */}
       <header className="sticky top-0 z-50 bg-[#09264A] border-b border-white/10 px-6 py-3">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <Logo onDark />
+          <Logo onDark animate />
           <Button href="#contacto" size="sm" variant="primary">
             Agenda 15 min
           </Button>

@@ -116,10 +116,29 @@ input, select, textarea { font-family: 'Inter', sans-serif; }
   animation: subtle-float 5s ease-in-out infinite;
 }
 
+/* ── Logo: animación de entrada (stroke draw + fade wordmark) ── */
+@keyframes bolt-draw {
+  0%   { clip-path: inset(0 0 100% 0); opacity: 0; }
+  10%  { opacity: 1; }
+  100% { clip-path: inset(0 0 0% 0); opacity: 1; }
+}
+@keyframes wordmark-fade {
+  0%   { opacity: 0; transform: translateX(-8px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+.logo-bolt {
+  animation: bolt-draw 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+}
+.logo-wordmark {
+  animation: wordmark-fade 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.7s both;
+}
+
 /* ── Respetar preferencias de usuario ── */
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   .card-hover:hover { transform: none; }
   .phone-float { animation: none; }
+  .logo-bolt { animation: none; clip-path: none; opacity: 1; }
+  .logo-wordmark { animation: none; opacity: 1; transform: none; }
   html { scroll-behavior: auto; }
 }

@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- JUTILABS — Logo Mark v4 (para fondos claros) -->
 <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="JutiLabs">
   <rect width="64" height="64" rx="14" fill="#09264A"/>
-  <path
-    d="M 27 4 L 42 4 L 42 27 L 35 35 L 42 35 L 29 46 L 36 46 L 11 61 L 20 49 L 14 49 L 27 38 L 20 38 L 33 27 L 33 11 L 27 11 Z"
-    fill="#FFBF00"
-    stroke="#0d1117"
-    stroke-width="2.5"
-    stroke-linejoin="miter"
-    stroke-miterlimit="8"
-  />
+  <path d="M 25 4 L 44 4 L 44 26 L 35 36 L 44 36 L 29 48 L 38 48 L 10 62 L 21 49 L 13 49 L 28 37 L 19 37 L 34 26 L 34 12 L 25 12 Z"
+    fill="#FFBF00" stroke="#0d1117" stroke-width="2" stroke-linejoin="miter" stroke-miterlimit="8"/>
 </svg>
