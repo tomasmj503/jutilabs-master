@@ -569,6 +569,20 @@ export default function App() {
         <Reveal>
           <DashboardMockup />
         </Reveal>
+
+        {/* Panel interactivo embebido — /demos/panel.html */}
+        <Reveal className="mt-8">
+          <div className="rounded-2xl border border-white/10 overflow-hidden shadow-2xl">
+            <iframe
+              src="/demos/panel.html"
+              title="Panel de demostración JUTILABS"
+              loading="lazy"
+              className="block w-full h-[560px] md:h-[720px]"
+              style={{ border: 0 }}
+            />
+          </div>
+        </Reveal>
+
         <p className="text-center text-xs text-white/40 mt-6">
           Panel de demostración basado en un negocio real · datos anonimizados.
         </p>
