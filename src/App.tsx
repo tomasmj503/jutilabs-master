@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import {
   CheckCircle2, ChevronDown, ArrowRight, MessageSquare,
-  CreditCard, ClipboardList, Truck, Star, BarChart3,
-  TrendingUp, Users, Package, Send, Sparkles
+  CreditCard, Truck, Star, BarChart3,
+  TrendingUp, Users, Send, Sparkles, Rocket
 } from 'lucide-react';
 
 // ═════════════════════════════════════════════════════════════════════
@@ -192,7 +192,7 @@ function MiniForm({ className = '' }: { className?: string }) {
         type="submit" disabled={loading}
         className="bg-[#FFBF00] text-[#09264A] font-bold px-6 py-3 rounded-xl hover:bg-[#FFD033] transition-all shadow-[0_4px_20px_-2px_rgb(255_191_0_/_0.35)] disabled:opacity-60 whitespace-nowrap text-sm"
       >
-        {loading ? 'Enviando...' : 'Hablar con Tom'}
+        {loading ? 'Enviando...' : 'Agenda 15 min'}
       </button>
     </form>
   );
@@ -247,19 +247,17 @@ export default function App() {
   };
 
   const cycleSteps = [
-    { icon: Package, title: 'Te muestra la carta', desc: 'Cuando alguien escribe, tu asistente le arma el menú con los precios del día.' },
-    { icon: MessageSquare, title: 'Entiende lo que piden', desc: 'Aunque escriban con errores o manden audio: "2 pollos con papas y una coca grande" — lo entiende.' },
-    { icon: ClipboardList, title: 'Confirma el total', desc: 'Le pasa el resumen al cliente, pregunta delivery o recojo, pide la dirección si hace falta.' },
-    { icon: CreditCard, title: 'Cobra por ti', desc: 'Acepta Yape, Nequi, Plin, Daviplata, efectivo o tarjeta. Si mandan comprobante, lo verifica solo.' },
-    { icon: BarChart3, title: 'Lo deja registrado', desc: 'Cada pedido va directo a tu Google Sheet: cliente, ítems, total, método de pago, hora.' },
-    { icon: Truck, title: 'Avisa cuando sale', desc: 'Marcas despachado y tu asistente le manda al cliente "¡Tu pedido va en camino!" automáticamente.' },
-    { icon: Star, title: 'Pide la reseña', desc: 'Dos horas después del despacho, le manda un WhatsApp con el link a Google Maps para que te califique.' },
+    { icon: MessageSquare, title: 'Toma el pedido', desc: 'Contesta en 5 segundos, a cualquier hora. Entiende aunque escriban con errores o manden audio. Cero pedidos perdidos por no contestar a tiempo.' },
+    { icon: CreditCard, title: 'Cobra', desc: 'Pasa el total, pregunta envío o recojo, y acepta Yape, Nequi, Plin, Daviplata, efectivo o tarjeta. Si mandan el comprobante, lo verifica solo.' },
+    { icon: BarChart3, title: 'Registra todo', desc: 'Cada venta queda guardada: cliente, productos, total, cómo pagó, a qué hora. Sin libretas, sin digitar.' },
+    { icon: Truck, title: 'Avisa cuando sale', desc: 'Marcas despachado y le escribe al cliente que su pedido va en camino. Tú no mueves un dedo.' },
+    { icon: Star, title: 'Pide la reseña', desc: 'Dos horas después del despacho, le manda el link de Google para que te califique. Más estrellas, sin perseguir a nadie.' },
   ];
 
   const faqs = [
     { q: '¿Tengo que cambiar mi WhatsApp o usar una app nueva?', a: 'Nada. Tu asistente corre sobre tu mismo WhatsApp Business. Tus clientes siguen escribiendo al número de siempre. No se enteran del cambio.' },
     { q: '¿Cuánto tiempo tarda en andar?', a: 'Dos semanas. Armamos tu carta, precios y métodos de pago, probamos contigo, y lanzamos. Tu operación no se detiene ni un día.' },
-    { q: '¿Esto reemplaza a mi gente?', a: 'No. Los libera de anotar pedidos a mano para que hagan lo que sí importa: cocinar, despachar, atender bien. Tu asistente es la base; tu equipo es la operación.' },
+    { q: '¿Esto reemplaza a mi gente?', a: 'No. Tu empleado de IA es la base que nunca falla; tu gente hace lo que una máquina no puede — cocinar, atender bien, dar la cara.' },
     { q: '¿Qué pasa si el asistente se equivoca con un pedido?', a: 'Lo ves todo en tu celular antes de que salga. Si algo no cuadra, pasa al operador humano. En la práctica, 99 de cada 100 pedidos salen bien solos.' },
     { q: '¿Funciona en mi país?', a: 'Sí. Trabajamos en Colombia, Perú, México, Chile y Ecuador. Tu asistente se adapta a tu moneda, tus métodos de pago (Yape, Nequi, Plin, Daviplata) y la forma de hablar de tu país.' },
     { q: '¿Esto reemplaza a Rappi o iFood?', a: 'No. Rappi te consigue clientes nuevos, eso sirve. Lo que automatizamos son los clientes que ya son tuyos — los que te escriben directo al WhatsApp. Esos pedidos no pagan comisión, y son los que hoy atiendes a mano.' },
@@ -291,7 +289,7 @@ export default function App() {
             </div>
 
             <p className="text-sm md:text-base text-[#FFBF00] font-semibold mb-2">
-              ¿Cuántos mensajes te quedaron sin contestar anoche?
+              Vendes por WhatsApp. Pero el celular no te suelta.
             </p>
 
             <h1 className="text-4xl sm:text-5xl md:text-[56px] font-bold mb-4 leading-[1.05]">
@@ -300,8 +298,8 @@ export default function App() {
             </h1>
 
             <p className="text-base md:text-lg text-white/70 mb-4 max-w-xl leading-relaxed">
-              Le instalamos un asistente con IA a tu WhatsApp Business.
-              <span className="text-white font-semibold"> Tú solo preparas.</span> Listo en 2 semanas.
+              Le instalamos a tu WhatsApp Business tu primer empleado con IA. Contesta, cobra y registra cada pedido —
+              <span className="text-white font-semibold"> tú solo preparas.</span> Funcionando en 2 semanas.
             </p>
 
             <Button href="#contacto" size="lg" variant="primary" className="w-full sm:w-auto">
@@ -311,7 +309,7 @@ export default function App() {
 
             {/* Barra de confianza — above the fold */}
             <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-white/60">
-              {['WhatsApp Business API oficial de Meta', 'Implementación en 2 semanas', 'Piloto gratis'].map((t) => (
+              {['WhatsApp Business API oficial de Meta', 'Piloto gratis', 'Funcionando en 2 semanas'].map((t) => (
                 <span key={t} className="inline-flex items-center gap-1.5">
                   <CheckCircle2 size={14} className="text-[#FFBF00] shrink-0" /> {t}
                 </span>
@@ -331,10 +329,10 @@ export default function App() {
         {/* Stats */}
         <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 mb-10">
           {[
-            { v: '530M+', l: 'usuarios WhatsApp en LATAM' },
-            { v: '4 horas', l: 'al día que tu equipo recupera*' },
-            { v: '<1%', l: 'de error en cada pedido' },
-            { v: '14 días', l: 'para tener tu asistente andando' },
+            { v: '4 h/día', l: 'que tu equipo deja de perder anotando pedidos*' },
+            { v: '<1%', l: 'de errores en los pedidos*' },
+            { v: '2 semanas', l: 'y queda funcionando' },
+            { v: '24/7', l: 'tu negocio nunca deja de contestar' },
           ].map((s) => (
             <div key={s.v} className="text-center">
               <div className="font-display text-2xl font-bold text-[#09264A]">{s.v}</div>
@@ -383,17 +381,16 @@ export default function App() {
 
         <div className="grid md:grid-cols-3 gap-6 mb-12">
           {[
-            { icon: MessageSquare, stat: '5–10', unit: 'mensajes perdidos por noche', title: 'El celular suena a las 11pm', desc: 'Llegan pedidos cuando ya nadie contesta. Al día siguiente, el cliente ya pidió en otro lado. Plata que se fue sin que te dieras cuenta.' },
-            { icon: TrendingUp, stat: '4 horas', unit: 'al día que no vuelven', title: 'Tu gente no cocina. Anota.', desc: 'Tu equipo pasa la mitad del turno copiando pedidos, verificando Yapes a mano, buscando direcciones. Esa hora no está cocinando ni atendiendo mejor.' },
-            { icon: Users, stat: '0%', unit: 'visibilidad real', title: 'Cierras sin saber cuánto vendiste', desc: 'No sabes qué producto te dio margen, qué día vendes más, ni quién te compra dos veces al mes. Decides por intuición porque no hay datos.' },
+            { icon: MessageSquare, stat: '11 pm', title: 'El celular suena y nadie contesta', desc: 'Llegan pedidos cuando ya cerraste. Al día siguiente, el cliente ya pidió en otro lado. Plata que se fue sin que te dieras cuenta.' },
+            { icon: TrendingUp, stat: '½ turno', title: 'Tu gente no cocina. Anota.', desc: 'Tu equipo pasa la mitad del turno copiando pedidos, verificando Yapes a mano y buscando direcciones. Ese tiempo no está cocinando ni atendiendo mejor.' },
+            { icon: Users, stat: '0 datos', title: 'Cierras sin saber cuánto vendiste', desc: 'No sabes qué producto te dejó margen, qué día vendes más, ni quién te compra dos veces al mes. Decides por intuición porque no hay números.' },
           ].map((c, i) => (
             <Reveal key={c.title} delay={(i + 1) as 1|2|3}>
             <Card>
               <div className="bg-[#09264A]/5 p-3 rounded-xl w-fit mb-5">
                 <c.icon size={22} className="text-[#09264A]" />
               </div>
-              <div className="font-display text-4xl font-bold text-[#09264A] mb-1">{c.stat}</div>
-              <div className="label-caps text-[#8A9197] mb-4">{c.unit}</div>
+              <div className="font-display text-4xl font-bold text-[#09264A] mb-3">{c.stat}</div>
               <h3 className="font-bold text-[#1C2228] mb-2 text-lg">{c.title}</h3>
               <p className="text-sm text-[#4A5159] leading-relaxed">{c.desc}</p>
             </Card>
@@ -406,7 +403,7 @@ export default function App() {
           <Eyebrow onDark>La idea completa</Eyebrow>
           <h3 className="font-display text-[26px] sm:text-3xl md:text-5xl font-bold leading-tight max-w-3xl mx-auto mt-3 mb-5">
             No es una app.<br/>
-            <span className="text-[#FFBF00]">Es la persona que no tuviste que contratar.</span>
+            <span className="text-[#FFBF00]">Es tu primer empleado de IA.</span>
           </h3>
           <p className="text-white/80 text-base md:text-xl max-w-2xl mx-auto leading-relaxed">
             Contesta pedidos todo el día y toda la noche. Casi nunca se equivoca — y tú lo ves todo antes de que salga.
@@ -430,10 +427,10 @@ export default function App() {
           <Eyebrow>Cómo se ve en la práctica</Eyebrow>
           <h2 className="text-[32px] sm:text-4xl md:text-5xl font-bold text-[#09264A] mb-4">
             3 negocios distintos.<br/>
-            <span className="text-[#09264A]">El mismo asistente.</span>
+            <span className="text-[#09264A]">El mismo empleado de IA.</span>
           </h2>
           <p className="text-[#4A5159]">
-            Hemos visto estos escenarios una y otra vez. Si alguno te suena familiar,
+            Hemos visto estos escenarios una y otra vez. Si alguno te suena,
             ya sabes por dónde empezamos.
           </p>
         </Reveal>
@@ -444,25 +441,25 @@ export default function App() {
               tag: 'Pollería · Piura, Perú',
               icon: '🍗',
               title: 'Pollería de barrio',
-              pain: '40+ pedidos al día por WhatsApp. La dueña anotaba todo en una libreta mientras su esposo cocinaba. Después de las 9pm entraban 5-10 mensajes que nadie alcanzaba a contestar.',
-              solution: 'Su asistente entiende los pedidos, muestra la carta, cobra por Yape y registra cada orden. Al cerrar la cocina, ella abre el celular y ve todo sin haber anotado nada.',
+              pain: 'A la hora pico nadie alcanza a contestar el WhatsApp y los pedidos se enfrían en "visto".',
+              solution: 'Contesta al instante, arma el pedido, cobra y lo manda a cocina.',
               outcome: 'Cero pedidos perdidos por no contestar a tiempo. Cierra sabiendo exactamente cuánto vendió — sin el celular en la mano.',
             },
             {
               tag: 'Distribuidora mayorista',
               icon: '🚚',
               title: 'Distribuidor de cárnicos',
-              pain: 'Recibía pedidos caóticos por WhatsApp — mensajes sueltos, audios a las 4am, cantidades sin confirmar. Cada pedido mal tomado significaba flete perdido o producto devuelto.',
-              solution: 'Su asistente entiende los pedidos por texto o audio, confirma cantidades y precios con el cliente antes de cerrar, y deja cada orden registrada en Google Sheets con cliente, ítems y total.',
-              outcome: 'Pedidos confirmados antes de salir de la bodega. Cero errores por "mal entendí lo que pidió". Todo rastreable al cierre del día.',
+              pain: 'Pedidos por voz, por foto, a media madrugada — y un error de cantidad cuesta caro.',
+              solution: 'Entiende el pedido venga como venga, lo confirma con el cliente y lo deja registrado.',
+              outcome: 'Pedidos confirmados antes de salir de la bodega. Cero errores por "mal entendí". Todo rastreable al cierre del día.',
             },
             {
               tag: 'Proveedor B2B',
               icon: '🍞',
               title: 'Insumos para panaderías',
-              pain: 'Decenas de panaderos mandando pedidos por WhatsApp cada madrugada. Alguien tenía que leerlos uno por uno, confirmar precios del día, y pasar todo a una planilla. Pedidos perdidos en los grupos de chat.',
-              solution: 'Su asistente contesta el pedido de cada panadero con la lista del día, confirma el total, y deja la orden registrada en el Sheet del cliente. Responde en segundos, 24/7.',
-              outcome: 'Pedidos contestados a los 5 segundos, no a las 2 horas. Ningún panadero se queda sin respuesta. Cierre de día con todo en un solo lugar.',
+              pain: 'Clientes que escriben temprano y necesitan respuesta ya, no en dos horas.',
+              solution: 'Responde en segundos, toma el pedido y agenda la entrega.',
+              outcome: 'Pedidos contestados a los 5 segundos, no a las 2 horas. Ningún cliente sin respuesta. Cierre de día con todo en un solo lugar.',
             },
           ].map((c) => (
             <div key={c.title} className="bg-[#F5F6F7] rounded-2xl p-7 border border-[#E8EAED] flex flex-col">
@@ -478,7 +475,7 @@ export default function App() {
               </div>
 
               <div className="mb-4">
-                <div className="label-caps text-[#09264A] mb-1.5 text-[10px]">Lo que hace JUTILABS</div>
+                <div className="label-caps text-[#09264A] mb-1.5 text-[10px]">Lo que hace</div>
                 <p className="text-sm text-[#4A5159] leading-relaxed">{c.solution}</p>
               </div>
 
@@ -492,20 +489,20 @@ export default function App() {
 
         <p className="text-center text-sm text-[#8A9197] mt-10 max-w-2xl mx-auto">
           * Basado en operaciones reales de clientes JUTILABS. Nombres omitidos por privacidad.
-          Cada implementación se adapta a tu negocio específico.
+          Cada implementación se adapta a tu negocio.
         </p>
       </Section>
 
       {/* ══ SOLUCIÓN — gray ══ */}
       <Section tone="gray">
         <Reveal className="text-center max-w-2xl mx-auto mb-14">
-          <Eyebrow>Qué hace tu asistente</Eyebrow>
+          <Eyebrow>Qué hace tu empleado de IA</Eyebrow>
           <h2 className="text-[32px] sm:text-4xl md:text-5xl font-bold text-[#09264A] mb-4">
-            Esto es lo que hace por ti —<br/>
-            todo el día, todos los días
+            Esto es lo que hace por ti,<br/>
+            todo el día, todos los días.
           </h2>
           <p className="text-[#4A5159]">
-            Siete cosas que antes hacía tu gente a mano. Ahora pasan solas,
+            Cinco cosas que antes hacía tu gente a mano. Ahora pasan solas,
             en el WhatsApp que ya tienes.
           </p>
         </Reveal>
@@ -525,10 +522,10 @@ export default function App() {
           ))}
           <Card tone="navy" className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-2 text-[#FFBF00] label-caps mb-3">
-              <Sparkles size={14} /> Además, siempre
+              <Sparkles size={14} /> Y además, siempre
             </div>
             <ul className="space-y-2.5 text-sm text-white/90">
-              {['Dashboard en tu celular','Registra gastos por voz o foto','Reportes automáticos en Sheets','Horarios configurables','Te atendemos por WhatsApp'].map((item) => (
+              {['Dashboard en tu celular','Registra gastos por voz o foto','Reportes automáticos en tu Sheet'].map((item) => (
                 <li key={item} className="flex items-center gap-2">
                   <CheckCircle2 size={14} className="text-[#FFBF00] shrink-0" />{item}
                 </li>
@@ -538,21 +535,43 @@ export default function App() {
         </div>
       </Section>
 
+      {/* ══ VISIÓN / ROADMAP — navy ══ */}
+      <Section tone="navy">
+        <Reveal className="text-center max-w-2xl mx-auto">
+          <div className="bg-[#FFBF00]/15 p-3 rounded-xl w-fit mx-auto mb-5">
+            <Rocket size={22} className="text-[#FFBF00]" />
+          </div>
+          <Eyebrow onDark>Hacia dónde va</Eyebrow>
+          <h2 className="text-[32px] sm:text-4xl md:text-5xl font-bold mb-5">
+            Hoy, tus pedidos.<br/>
+            <span className="text-[#FFBF00]">Mañana, toda tu operación.</span>
+          </h2>
+          <p className="text-white/70 text-base md:text-lg leading-relaxed">
+            Tu empleado de IA empieza por lo que más duele: vender y cobrar sin que vivas pegado al celular.
+            Con el tiempo aprende tu negocio y se hace cargo de más — los gastos, la caja, los clientes que vuelven.
+            No compras una app que se queda quieta; sumas a alguien que crece contigo.
+          </p>
+        </Reveal>
+      </Section>
+
       {/* ══ DASHBOARD — navyDeep ══ */}
       <Section tone="navyDeep">
         <Reveal className="text-center max-w-2xl mx-auto mb-10">
           <Eyebrow onDark>Tu panel en tiempo real</Eyebrow>
           <h2 className="text-[32px] sm:text-4xl md:text-5xl font-bold mb-4">
-            Así se ve tu panel en tiempo real
+            Así se ve tu negocio, en vivo, desde tu celular.
           </h2>
           <p className="text-white/60">
             Cada pedido entra acá. Lo ves, lo marcas listo, se despacha.
-            Todo desde tu celular.
+            Ventas, gastos y caja, en un solo lugar.
           </p>
         </Reveal>
         <Reveal>
           <DashboardMockup />
         </Reveal>
+        <p className="text-center text-xs text-white/40 mt-6">
+          Panel de demostración basado en un negocio real · datos anonimizados.
+        </p>
       </Section>
 
       {/* ══ 60 DÍAS — white ══ */}
@@ -560,20 +579,20 @@ export default function App() {
         <Reveal className="text-center max-w-2xl mx-auto mb-14">
           <Eyebrow>Lo que vas a sentir</Eyebrow>
           <h2 className="text-[32px] sm:text-4xl md:text-5xl font-bold text-[#09264A] mb-4">
-            Así se ven tus primeros 60 días
+            Así se ven tus primeros 60 días.
           </h2>
           <p className="text-[#4A5159]">
-            No es proyección ni promesa. Es lo que pasa cuando tu asistente entra a trabajar.
+            No es proyección ni promesa. Es lo que pasa cuando tu empleado de IA entra a trabajar.
           </p>
         </Reveal>
 
         <div className="max-w-3xl mx-auto">
           {[
-            { day: 'Día 1', title: 'Entra a trabajar', desc: 'Tu asistente contesta su primer pedido. Lo ves aparecer en tu celular sin haber hecho nada.' },
-            { day: 'Día 7', title: 'Ves tu primera semana completa', desc: 'Sabes cuánto vendiste, qué día entró más plata, por dónde pagaron. Sin abrir una libreta.' },
-            { day: 'Día 14', title: 'Tu asistente ya maneja los pedidos solo', desc: 'Entiende los mensajes, cobra y registra sin que tengas que revisar cada uno. Supervisas desde tu celular si quieres.' },
+            { day: 'Día 1', title: 'Entra a trabajar', desc: 'Contesta su primer pedido. Lo ves aparecer en tu celular sin haber hecho nada.' },
+            { day: 'Día 7', title: 'Ves tu primera semana completa', desc: 'Sabes cuánto vendiste, qué día entró más plata, por dónde te pagaron. Sin abrir una libreta.' },
+            { day: 'Día 14', title: 'Ya maneja los pedidos solo', desc: 'Entiende los mensajes, cobra y registra sin que revises cada uno. Supervisas desde el celular si quieres.' },
             { day: 'Día 30', title: 'Empiezas a ver el negocio', desc: 'Qué producto te deja más, qué cliente vuelve cada semana, a qué hora vendes más. Decides con datos, no con memoria.' },
-            { day: 'Día 60', title: 'Los pedidos, las reseñas y los recordatorios ya corren solos', desc: 'Clientes que vuelven por promos automáticas. Reseñas en Google que llegan sin pedirlas. Todo sin contratar a nadie.' },
+            { day: 'Día 60', title: 'Todo corre solo', desc: 'Pedidos, reseñas y recordatorios automáticos. Clientes que vuelven por promos que salen sin que las mandes. Reseñas que llegan sin pedirlas.' },
           ].map((d, i) => (
             <div key={d.day} className="flex gap-6 pb-8 relative">
               {/* Línea vertical */}
@@ -593,32 +612,21 @@ export default function App() {
       {/* ══ PRECIOS — navy ══ */}
       <Section tone="navy">
         <Reveal className="text-center max-w-2xl mx-auto mb-14">
-          <Eyebrow onDark>Cuánto cuesta</Eyebrow>
+          <Eyebrow onDark>Precios</Eyebrow>
           <h2 className="text-[32px] sm:text-4xl md:text-5xl font-bold mb-4">
             Menos que un medio tiempo.<br/>
-            Trabaja 6 veces más.
+            Y trabaja 24/7.
           </h2>
           <p className="text-white/60">
-            Una mensualidad fija. Sin sueldo mínimo. Sin prestaciones.
-            Sin comisión por pedido.
-          </p>
-        </Reveal>
-
-        <Reveal className="text-center max-w-2xl mx-auto mb-12">
-          <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-            Empieza con tu asistente. Crece cuando estés listo.
-          </h3>
-          <p className="text-white/60">
-            Arrancas con lo esencial — tu asistente de WhatsApp que toma pedidos, cobra y registra.
-            Cuando el negocio lo pida, sumamos campañas, panel de datos, agentes a la medida, POS y facturación.
+            Sin contratos eternos. Empiezas con un piloto gratis; si no te sirve, no pagas.
           </p>
         </Reveal>
 
         <div className="grid md:grid-cols-3 gap-6 items-stretch">
           {[
-            { name: 'Starter', tagline: 'Para arrancar rápido y empezar a ver resultados.', anchor: 'Desde $390.000 COP / mes', idealFor: 'Ideal si recibes hasta 30 pedidos al día', features: ['Tu asistente en WhatsApp 24/7','Catálogo, pedido, pago, despacho y reseña','Registra gastos por voz o foto','Dashboard en tu celular','Reportes automáticos en Sheets','Te atendemos por WhatsApp'], cta: 'Agenda 15 min', popular: false },
-            { name: 'Pro', tagline: 'Para crecer sin tener que contratar más gente.', anchor: 'Desde $890.000 COP / mes', idealFor: 'Para negocios con 30–100 pedidos que quieren crecer', features: ['Todo lo del Starter, y además:','Campañas de WhatsApp a tus clientes','Llamadas perdidas se convierten en pedido','Cobro automático a los que te deben','Control de mesas y caja (restaurantes)','Lista de precios del día automática','Agentes a la medida para tu operación'], cta: 'Agenda 15 min', popular: true },
-            { name: 'Enterprise', tagline: 'Para operaciones grandes que necesitan todo integrado.', anchor: 'A la medida', idealFor: 'Múltiples sucursales o ventas B2B', features: ['Todo lo del Pro, y además:','Pedidos B2B mayoristas','Trazabilidad en tiempo real del pedido','Facturación electrónica','Conexión a tu POS actual','Múltiples usuarios y sucursales'], cta: 'Agenda 15 min', popular: false },
+            { name: 'Starter', tagline: 'Para el negocio que quiere dejar de perder pedidos por WhatsApp.', anchor: 'Desde $390.000 COP / mes', features: ['Empleado de IA que toma pedidos y cobra','Registro automático en tu Sheet','Dashboard en tu celular','Soporte'], cta: 'Agenda 15 min', popular: false },
+            { name: 'Pro', tagline: 'Toda tu operación en piloto automático.', anchor: 'Desde $890.000 COP / mes', features: ['Todo lo de Starter','Gastos por voz o foto','Caja y cierres del día','Postventa y reseñas automáticas','Reportes automáticos'], cta: 'Agenda 15 min', popular: true },
+            { name: 'Enterprise', tagline: 'Para cadenas o varios locales.', anchor: 'A la medida', features: ['Varios puntos','Conexión con tu POS','Integraciones a medida','Acompañamiento dedicado'], cta: 'Agenda 15 min', popular: false },
           ].map((p) => (
             <div key={p.name} className={`rounded-2xl p-8 relative flex flex-col ${p.popular ? 'bg-white text-[#1C2228] shadow-2xl md:-translate-y-3 border-2 border-[#FFBF00]' : 'bg-white/5 border border-white/10'}`}>
               {p.popular && (
@@ -648,9 +656,6 @@ export default function App() {
               <a href="#contacto" className={`block text-center py-3 rounded-xl font-bold transition-all ${p.popular ? 'bg-[#FFBF00] text-[#09264A] hover:bg-[#FFD033] shadow-[0_4px_20px_-2px_rgb(255_191_0_/_0.35)]' : 'border-2 border-white/30 text-white hover:bg-white hover:text-[#09264A]'}`}>
                 {p.cta}
               </a>
-              <p className={`text-xs text-center mt-4 ${p.popular ? 'text-[#8A9197]' : 'text-white/50'}`}>
-                {p.idealFor}
-              </p>
             </div>
           ))}
         </div>
@@ -677,14 +682,13 @@ export default function App() {
               <li className="flex justify-between"><span>Se enferma, falta, renuncia</span><span className="font-semibold">sí</span></li>
             </ul>
             <p className="text-[10px] text-white/40 mt-4 leading-relaxed">
-              Referencia: sueldo mínimo Perú S/1,025 (~$270/mes full time) ·
-              Colombia ~$350/mes + prestaciones.
+              Referencia: salario mínimo en Colombia (jornada completa) más prestaciones de ley.
             </p>
           </div>
           <div className="bg-[#FFBF00]/10 border border-[#FFBF00]/30 rounded-2xl p-7">
-            <div className="label-caps text-[#FFBF00] mb-3">Tu asistente JUTILABS</div>
+            <div className="label-caps text-[#FFBF00] mb-3">Tu empleado de IA</div>
             <ul className="space-y-2.5 text-sm text-white">
-              <li className="flex justify-between border-b border-white/10 pb-2 gap-3"><span>Mensualidad fija</span><span className="font-semibold text-[#FFBF00] text-right">la definimos en la llamada</span></li>
+              <li className="flex justify-between border-b border-white/10 pb-2 gap-3"><span>Mensualidad</span><span className="font-semibold text-[#FFBF00] text-right">desde $390.000 COP/mes</span></li>
               <li className="flex justify-between border-b border-white/10 pb-2"><span>Prestaciones</span><span className="font-semibold text-[#FFBF00]">ninguna</span></li>
               <li className="flex justify-between border-b border-white/10 pb-2"><span>Horario</span><span className="font-semibold text-[#FFBF00]">24/7</span></li>
               <li className="flex justify-between"><span>Se enferma, falta, renuncia</span><span className="font-semibold text-[#FFBF00]">nunca</span></li>
@@ -730,12 +734,11 @@ export default function App() {
           <Reveal>
           <Eyebrow onDark>Último paso</Eyebrow>
           <h2 className="text-[32px] sm:text-4xl md:text-5xl font-bold mb-4">
-            ¿Cuándo fue la última vez que cerraste tranquilo,<br/>
-            <span className="text-[#FFBF00]">sin el celular en la mano?</span>
+            Hablemos 15 minutos.<br/>
+            <span className="text-[#FFBF00]">Te muestro cómo se vería en tu negocio.</span>
           </h2>
           <p className="text-white/60 mb-10">
-            15 minutos conmigo. Revisamos tu operación, te digo si te puedo ayudar o no,
-            y te vas con un plan aunque no me contrates.
+            Déjame tus datos y te escribo por WhatsApp. Sin compromiso, sin presión.
           </p>
           </Reveal>
 
@@ -771,7 +774,7 @@ export default function App() {
               </Button>
 
               <p className="text-xs text-[#8A9197] text-center">
-                Implementación en 1–2 semanas · Sin reemplazar nada · Sin contratos largos
+                Piloto gratis. Si no te sirve, no pagas.
               </p>
             </form>
           )}
