@@ -567,16 +567,30 @@ export default function App() {
           </p>
         </Reveal>
         {/* Panel interactivo embebido — /demos/panel.html */}
-        <Reveal className="mt-8">
-          <div className="rounded-2xl border border-white/10 overflow-hidden shadow-2xl">
+        <Reveal className="mt-8 max-w-4xl mx-auto">
+          <div className="rounded-2xl border border-white/10 overflow-hidden shadow-2xl bg-[#08080a]">
+            {/* Barra tipo ventana de navegador */}
+            <div className="flex items-center gap-2 px-4 py-2.5 bg-white/5 border-b border-white/10">
+              <span className="w-3 h-3 rounded-full bg-[#FF5F57]"></span>
+              <span className="w-3 h-3 rounded-full bg-[#FEBC2E]"></span>
+              <span className="w-3 h-3 rounded-full bg-[#28C840]"></span>
+              <span className="ml-3 text-[11px] text-white/40 truncate">panel.jutilabs.com</span>
+              <a href="/demos/panel.html" target="_blank" rel="noopener"
+                 className="ml-auto text-[11px] text-[#FFBF00] font-semibold hover:underline whitespace-nowrap">
+                ⤢ Pantalla completa
+              </a>
+            </div>
             <iframe
               src="/demos/panel.html"
               title="Panel de demostración JUTILABS"
               loading="lazy"
-              className="block w-full h-[560px] md:h-[720px]"
+              className="block w-full h-[420px] md:h-[600px]"
               style={{ border: 0 }}
             />
           </div>
+          <p className="text-center text-xs text-white/50 mt-3">
+            Toca <span className="text-[#FFBF00]">⤢ Pantalla completa</span> para explorar el panel con todos sus filtros.
+          </p>
         </Reveal>
 
         <p className="text-center text-xs text-white/40 mt-6">
