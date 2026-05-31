@@ -70,7 +70,7 @@ function Logo({ size = 'md', onDark = false, animate = false }: { size?: 'sm' | 
           className={animate ? 'logo-bolt' : ''}
         />
       </svg>
-      <span className={animate ? 'logo-wordmark' : ''}>
+      <span className={`tracking-[-0.04em] ${animate ? 'logo-wordmark' : ''}`}>
         <span style={{ color: wordmarkColor }}>JUTI</span>
         <span style={{ color: '#FFBF00' }}>LABS</span>
       </span>
@@ -282,10 +282,10 @@ export default function App() {
 
       <main>
       {/* ══ HERO — navy ══ */}
-      <Section tone="navy" className="!py-16 md:!py-32">
-        <div className="grid md:grid-cols-2 gap-10 md:gap-12 items-center">
+      <Section tone="navy" className="!pt-8 md:!pt-16 !pb-14 md:!pb-24">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div>
-            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-3 md:px-4 py-1.5 rounded-full text-[11px] md:text-xs font-medium mb-6 max-w-full">
+            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-3 md:px-4 py-1.5 rounded-full text-[11px] md:text-xs font-medium mb-4 max-w-full">
               <span className="w-2 h-2 bg-[#FFBF00] rounded-full animate-pulse shrink-0"></span>
               <span className="truncate">Restaurantes · Distribuidoras · Carnicerías · Panaderías</span>
             </div>
@@ -294,26 +294,29 @@ export default function App() {
               ¿Cuántos mensajes te quedaron sin contestar anoche?
             </p>
 
-            <h1 className="text-[34px] sm:text-5xl md:text-6xl font-bold mb-6 leading-[1.1]">
-              Tu WhatsApp toma el pedido, cobra y lleva las cuentas.{' '}
-              <span className="text-[#FFBF00]">Tú solo preparas.</span>
+            <h1 className="text-[34px] sm:text-5xl md:text-6xl font-bold mb-5 leading-[1.1]">
+              Tu WhatsApp toma el pedido{' '}
+              <span className="text-[#FFBF00]">y cobra solo.</span>
             </h1>
 
-            <p className="text-base md:text-lg text-white/70 mb-8 max-w-xl leading-relaxed">
+            <p className="text-base md:text-lg text-white/70 mb-7 max-w-xl leading-relaxed">
               Le instalamos un asistente con IA a tu WhatsApp Business.
-              <span className="text-white font-semibold"> Sin apps nuevas, sin hardware. Andando en 2 semanas.</span>
+              <span className="text-white font-semibold"> Tú solo preparas.</span> Listo en 2 semanas.
             </p>
 
             <Button href="#contacto" size="lg" variant="primary" className="w-full sm:w-auto">
-              Agenda 15 min conmigo
+              Agenda 15 min
               <ArrowRight size={20} />
             </Button>
-            <p className="mt-4 text-sm text-white/70">
-              Diagnóstico gratis · 15 minutos · Sin compromiso
-            </p>
-            <p className="mt-2 text-sm text-[#FFBF00] font-semibold">
-              🚀 Piloto 2 semanas gratis
-            </p>
+
+            {/* Barra de confianza — above the fold */}
+            <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-white/60">
+              {['WhatsApp Business API oficial de Meta', 'Implementación en 2 semanas', 'Piloto gratis'].map((t) => (
+                <span key={t} className="inline-flex items-center gap-1.5">
+                  <CheckCircle2 size={14} className="text-[#FFBF00] shrink-0" /> {t}
+                </span>
+              ))}
+            </div>
           </div>
 
           {/* Phone mockup con float sutil */}
@@ -755,7 +758,7 @@ export default function App() {
               ))}
 
               <Button type="submit" variant="primary" size="lg" disabled={loading} className="w-full">
-                {loading ? 'Enviando...' : <><Send size={18} /> Agendar 15 min con Tom</>}
+                {loading ? 'Enviando...' : <><Send size={18} /> Agenda 15 min</>}
               </Button>
 
               <p className="text-xs text-[#8A9197] text-center">
@@ -799,7 +802,7 @@ export default function App() {
       {/* ══ STICKY MOBILE CTA ══ */}
       <div className="fixed bottom-0 left-0 w-full p-3 bg-white border-t border-[#E8EAED] shadow-lg md:hidden z-50">
         <Button href="#contacto" variant="primary" size="md" className="w-full">
-          Agenda 15 min conmigo
+          Agenda 15 min
         </Button>
       </div>
 
