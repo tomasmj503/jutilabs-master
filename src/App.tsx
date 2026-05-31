@@ -290,14 +290,18 @@ export default function App() {
               <span className="truncate">Restaurantes · Distribuidoras · Carnicerías · Panaderías</span>
             </div>
 
+            <p className="text-sm md:text-base text-[#FFBF00] font-semibold mb-3">
+              ¿Cuántos mensajes te quedaron sin contestar anoche?
+            </p>
+
             <h1 className="text-[34px] sm:text-5xl md:text-6xl font-bold mb-6 leading-[1.1]">
-              ¿Cuántos mensajes te quedaron sin contestar anoche?{' '}
-              <span className="text-[#FFBF00]">Cada uno es plata que se fue.</span>
+              Tu WhatsApp toma el pedido, cobra y lleva las cuentas.{' '}
+              <span className="text-[#FFBF00]">Tú solo preparas.</span>
             </h1>
 
             <p className="text-base md:text-lg text-white/70 mb-8 max-w-xl leading-relaxed">
-              Te ponemos un asistente en tu WhatsApp.
-              <span className="text-white font-semibold"> Tú solo preparas.</span>
+              Le instalamos un asistente con IA a tu WhatsApp Business.
+              <span className="text-white font-semibold"> Sin apps nuevas, sin hardware. Andando en 2 semanas.</span>
             </p>
 
             <Button href="#contacto" size="lg" variant="primary" className="w-full sm:w-auto">
@@ -402,7 +406,7 @@ export default function App() {
             <span className="text-[#FFBF00]">Es la persona que no tuviste que contratar.</span>
           </h3>
           <p className="text-white/80 text-base md:text-xl max-w-2xl mx-auto leading-relaxed">
-            Contesta pedidos todo el día y toda la noche. No se equivoca.
+            Contesta pedidos todo el día y toda la noche. Casi nunca se equivoca — y tú lo ves todo antes de que salga.
             No pide aumento. No se enferma un viernes.
           </p>
           <p className="text-white font-semibold text-base md:text-xl mt-5 max-w-2xl mx-auto">
@@ -597,11 +601,21 @@ export default function App() {
           </p>
         </Reveal>
 
+        <Reveal className="text-center max-w-2xl mx-auto mb-12">
+          <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+            Empieza con tu asistente. Crece cuando estés listo.
+          </h3>
+          <p className="text-white/60">
+            Arrancas con lo esencial — tu asistente de WhatsApp que toma pedidos, cobra y registra.
+            Cuando el negocio lo pida, sumamos campañas, panel de datos, agentes a la medida, POS y facturación.
+          </p>
+        </Reveal>
+
         <div className="grid md:grid-cols-3 gap-6 items-stretch">
           {[
-            { name: 'Starter', tagline: 'Para arrancar rápido y empezar a ver resultados.', idealFor: 'Ideal si recibes hasta 30 pedidos al día', price: '$97', priceRange: ' USD/mes', setup: 'Setup: $497 USD', features: ['Tu asistente en WhatsApp 24/7','Catálogo, pedido, pago, despacho y reseña','Registra gastos por voz o foto','Dashboard en tu celular','Reportes automáticos en Sheets','Te atendemos por WhatsApp'], cta: 'Quiero arrancar', popular: false },
-            { name: 'Pro', tagline: 'Para crecer sin tener que contratar más gente.', idealFor: 'Para negocios con 30–100 pedidos que quieren crecer', price: '$297', priceRange: ' USD/mes', setup: 'Setup: $1,497 USD', features: ['Todo lo del Starter, y además:','Campañas de WhatsApp a tus clientes','Llamadas perdidas se convierten en pedido','Cobro automático a los que te deben','Control de mesas y caja (restaurantes)','Lista de precios del día automática'], cta: 'Quiero el Pro', popular: true },
-            { name: 'Enterprise', tagline: 'Para operaciones grandes que necesitan todo integrado.', idealFor: 'Múltiples sucursales o ventas B2B', price: '$497', priceRange: ' USD/mes', setup: 'Setup: $2,997 USD', features: ['Todo lo del Pro, y además:','Pedidos B2B mayoristas','Trazabilidad en tiempo real del pedido','Facturación electrónica','Conexión a tu POS actual','Múltiples usuarios y sucursales'], cta: 'Hablar conmigo', popular: false },
+            { name: 'Starter', tagline: 'Para arrancar rápido y empezar a ver resultados.', idealFor: 'Ideal si recibes hasta 30 pedidos al día', features: ['Tu asistente en WhatsApp 24/7','Catálogo, pedido, pago, despacho y reseña','Registra gastos por voz o foto','Dashboard en tu celular','Reportes automáticos en Sheets','Te atendemos por WhatsApp'], cta: 'Agenda 15 min', popular: false },
+            { name: 'Pro', tagline: 'Para crecer sin tener que contratar más gente.', idealFor: 'Para negocios con 30–100 pedidos que quieren crecer', features: ['Todo lo del Starter, y además:','Campañas de WhatsApp a tus clientes','Llamadas perdidas se convierten en pedido','Cobro automático a los que te deben','Control de mesas y caja (restaurantes)','Lista de precios del día automática','Agentes a la medida para tu operación'], cta: 'Agenda 15 min', popular: true },
+            { name: 'Enterprise', tagline: 'Para operaciones grandes que necesitan todo integrado.', idealFor: 'Múltiples sucursales o ventas B2B', features: ['Todo lo del Pro, y además:','Pedidos B2B mayoristas','Trazabilidad en tiempo real del pedido','Facturación electrónica','Conexión a tu POS actual','Múltiples usuarios y sucursales'], cta: 'Agenda 15 min', popular: false },
           ].map((p) => (
             <div key={p.name} className={`rounded-2xl p-8 relative flex flex-col ${p.popular ? 'bg-white text-[#1C2228] shadow-2xl md:-translate-y-3 border-2 border-[#FFBF00]' : 'bg-white/5 border border-white/10'}`}>
               {p.popular && (
@@ -610,12 +624,7 @@ export default function App() {
                 </div>
               )}
               <h3 className={`font-display text-2xl font-bold mb-1 ${p.popular ? 'text-[#09264A]' : 'text-white'}`}>{p.name}</h3>
-              <p className={`text-sm mb-6 ${p.popular ? 'text-[#4A5159]' : 'text-white/60'}`}>{p.tagline}</p>
-              <div className="mb-1">
-                <span className={`font-display text-5xl font-bold ${p.popular ? 'text-[#09264A]' : 'text-[#FFBF00]'}`}>{p.price}</span>
-                <span className={`${p.popular ? 'text-[#8A9197]' : 'text-white/50'} text-sm`}>{p.priceRange}</span>
-              </div>
-              <div className={`text-xs mb-7 ${p.popular ? 'text-[#8A9197]' : 'text-white/40'}`}>{p.setup}</div>
+              <p className={`text-sm mb-7 ${p.popular ? 'text-[#4A5159]' : 'text-white/60'}`}>{p.tagline}</p>
               <ul className="space-y-3 mb-8 text-sm flex-1">
                 {p.features.map((f) => (
                   <li key={f} className={`flex items-start gap-2 ${p.popular ? 'text-[#1C2228]/90' : 'text-white/90'}`}>
@@ -634,8 +643,14 @@ export default function App() {
           ))}
         </div>
 
+        {/* Cómo se define el precio */}
+        <p className="mt-10 text-center text-base text-white/80 max-w-2xl mx-auto leading-relaxed">
+          El precio se ajusta a tu operación — lo definimos juntos en la llamada de 15 min.
+          Siempre arrancamos con un <span className="text-[#FFBF00] font-semibold">piloto gratis</span>: si no te sirve, no pagas.
+        </p>
+
         {/* Urgencia honesta — escasez real */}
-        <p className="mt-10 text-center text-sm text-white/60 max-w-xl mx-auto">
+        <p className="mt-6 text-center text-sm text-white/60 max-w-xl mx-auto">
           Tomo máximo <span className="text-[#FFBF00] font-semibold">3 clientes nuevos al mes</span> para poder instalar todo bien, contigo.
         </p>
 
@@ -657,7 +672,7 @@ export default function App() {
           <div className="bg-[#FFBF00]/10 border border-[#FFBF00]/30 rounded-2xl p-7">
             <div className="label-caps text-[#FFBF00] mb-3">Tu asistente JUTILABS</div>
             <ul className="space-y-2.5 text-sm text-white">
-              <li className="flex justify-between border-b border-white/10 pb-2"><span>Mensualidad</span><span className="font-semibold text-[#FFBF00]">desde $97/mes</span></li>
+              <li className="flex justify-between border-b border-white/10 pb-2 gap-3"><span>Mensualidad fija</span><span className="font-semibold text-[#FFBF00] text-right">la definimos en la llamada</span></li>
               <li className="flex justify-between border-b border-white/10 pb-2"><span>Prestaciones</span><span className="font-semibold text-[#FFBF00]">ninguna</span></li>
               <li className="flex justify-between border-b border-white/10 pb-2"><span>Horario</span><span className="font-semibold text-[#FFBF00]">24/7</span></li>
               <li className="flex justify-between"><span>Se enferma, falta, renuncia</span><span className="font-semibold text-[#FFBF00]">nunca</span></li>
