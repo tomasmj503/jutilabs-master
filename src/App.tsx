@@ -616,9 +616,9 @@ export default function App() {
 
         <div className="grid md:grid-cols-3 gap-6 items-stretch">
           {[
-            { name: 'Starter', tagline: 'Para arrancar rápido y empezar a ver resultados.', idealFor: 'Ideal si recibes hasta 30 pedidos al día', features: ['Tu asistente en WhatsApp 24/7','Catálogo, pedido, pago, despacho y reseña','Registra gastos por voz o foto','Dashboard en tu celular','Reportes automáticos en Sheets','Te atendemos por WhatsApp'], cta: 'Agenda 15 min', popular: false },
-            { name: 'Pro', tagline: 'Para crecer sin tener que contratar más gente.', idealFor: 'Para negocios con 30–100 pedidos que quieren crecer', features: ['Todo lo del Starter, y además:','Campañas de WhatsApp a tus clientes','Llamadas perdidas se convierten en pedido','Cobro automático a los que te deben','Control de mesas y caja (restaurantes)','Lista de precios del día automática','Agentes a la medida para tu operación'], cta: 'Agenda 15 min', popular: true },
-            { name: 'Enterprise', tagline: 'Para operaciones grandes que necesitan todo integrado.', idealFor: 'Múltiples sucursales o ventas B2B', features: ['Todo lo del Pro, y además:','Pedidos B2B mayoristas','Trazabilidad en tiempo real del pedido','Facturación electrónica','Conexión a tu POS actual','Múltiples usuarios y sucursales'], cta: 'Agenda 15 min', popular: false },
+            { name: 'Starter', tagline: 'Para arrancar rápido y empezar a ver resultados.', anchor: 'Desde $97.000 COP / mes', idealFor: 'Ideal si recibes hasta 30 pedidos al día', features: ['Tu asistente en WhatsApp 24/7','Catálogo, pedido, pago, despacho y reseña','Registra gastos por voz o foto','Dashboard en tu celular','Reportes automáticos en Sheets','Te atendemos por WhatsApp'], cta: 'Agenda 15 min', popular: false },
+            { name: 'Pro', tagline: 'Para crecer sin tener que contratar más gente.', anchor: 'Desde $290.000 COP / mes', idealFor: 'Para negocios con 30–100 pedidos que quieren crecer', features: ['Todo lo del Starter, y además:','Campañas de WhatsApp a tus clientes','Llamadas perdidas se convierten en pedido','Cobro automático a los que te deben','Control de mesas y caja (restaurantes)','Lista de precios del día automática','Agentes a la medida para tu operación'], cta: 'Agenda 15 min', popular: true },
+            { name: 'Enterprise', tagline: 'Para operaciones grandes que necesitan todo integrado.', anchor: 'A la medida', idealFor: 'Múltiples sucursales o ventas B2B', features: ['Todo lo del Pro, y además:','Pedidos B2B mayoristas','Trazabilidad en tiempo real del pedido','Facturación electrónica','Conexión a tu POS actual','Múltiples usuarios y sucursales'], cta: 'Agenda 15 min', popular: false },
           ].map((p) => (
             <div key={p.name} className={`rounded-2xl p-8 relative flex flex-col ${p.popular ? 'bg-white text-[#1C2228] shadow-2xl md:-translate-y-3 border-2 border-[#FFBF00]' : 'bg-white/5 border border-white/10'}`}>
               {p.popular && (
@@ -627,7 +627,16 @@ export default function App() {
                 </div>
               )}
               <h3 className={`font-display text-2xl font-bold mb-1 ${p.popular ? 'text-[#09264A]' : 'text-white'}`}>{p.name}</h3>
-              <p className={`text-sm mb-7 ${p.popular ? 'text-[#4A5159]' : 'text-white/60'}`}>{p.tagline}</p>
+              <p className={`text-sm mb-5 ${p.popular ? 'text-[#4A5159]' : 'text-white/60'}`}>{p.tagline}</p>
+
+              {/* Ancla de precio — "desde" para que el comprador se autocalifique */}
+              <div className="mb-6">
+                <div className="font-display text-2xl md:text-3xl font-bold text-[#FFBF00] leading-tight">{p.anchor}</div>
+                <div className={`text-xs mt-1 ${p.popular ? 'text-[#8A9197]' : 'text-white/50'}`}>
+                  el precio final depende de tu operación
+                </div>
+              </div>
+
               <ul className="space-y-3 mb-8 text-sm flex-1">
                 {p.features.map((f) => (
                   <li key={f} className={`flex items-start gap-2 ${p.popular ? 'text-[#1C2228]/90' : 'text-white/90'}`}>
