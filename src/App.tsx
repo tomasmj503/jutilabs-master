@@ -566,10 +566,6 @@ export default function App() {
             Ventas, gastos y caja, en un solo lugar.
           </p>
         </Reveal>
-        <Reveal>
-          <DashboardMockup />
-        </Reveal>
-
         {/* Panel interactivo embebido — /demos/panel.html */}
         <Reveal className="mt-8">
           <div className="rounded-2xl border border-white/10 overflow-hidden shadow-2xl">
