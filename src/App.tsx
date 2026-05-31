@@ -282,24 +282,24 @@ export default function App() {
 
       <main>
       {/* ══ HERO — navy ══ */}
-      <Section tone="navy" className="!pt-8 md:!pt-16 !pb-14 md:!pb-24">
+      <Section tone="navy" className="!pt-4 md:!pt-10 !pb-14 md:!pb-24">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div>
-            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-3 md:px-4 py-1.5 rounded-full text-[11px] md:text-xs font-medium mb-4 max-w-full">
+            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-3 md:px-4 py-1.5 rounded-full text-[11px] md:text-xs font-medium mb-3 max-w-full">
               <span className="w-2 h-2 bg-[#FFBF00] rounded-full animate-pulse shrink-0"></span>
               <span className="truncate">Restaurantes · Distribuidoras · Carnicerías · Panaderías</span>
             </div>
 
-            <p className="text-sm md:text-base text-[#FFBF00] font-semibold mb-3">
+            <p className="text-sm md:text-base text-[#FFBF00] font-semibold mb-2">
               ¿Cuántos mensajes te quedaron sin contestar anoche?
             </p>
 
-            <h1 className="text-[34px] sm:text-5xl md:text-6xl font-bold mb-5 leading-[1.1]">
+            <h1 className="text-4xl sm:text-5xl md:text-[56px] font-bold mb-4 leading-[1.05]">
               Tu WhatsApp toma el pedido{' '}
               <span className="text-[#FFBF00]">y cobra solo.</span>
             </h1>
 
-            <p className="text-base md:text-lg text-white/70 mb-7 max-w-xl leading-relaxed">
+            <p className="text-base md:text-lg text-white/70 mb-4 max-w-xl leading-relaxed">
               Le instalamos un asistente con IA a tu WhatsApp Business.
               <span className="text-white font-semibold"> Tú solo preparas.</span> Listo en 2 semanas.
             </p>
@@ -310,7 +310,7 @@ export default function App() {
             </Button>
 
             {/* Barra de confianza — above the fold */}
-            <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-white/60">
+            <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-white/60">
               {['WhatsApp Business API oficial de Meta', 'Implementación en 2 semanas', 'Piloto gratis'].map((t) => (
                 <span key={t} className="inline-flex items-center gap-1.5">
                   <CheckCircle2 size={14} className="text-[#FFBF00] shrink-0" /> {t}
