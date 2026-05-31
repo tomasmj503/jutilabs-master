@@ -618,7 +618,7 @@ export default function App() {
             Y trabaja 24/7.
           </h2>
           <p className="text-white/60">
-            Sin contratos eternos. Empiezas con un piloto gratis; si no te sirve, no pagas.
+            Sin contratos eternos. Cancelas cuando quieras.
           </p>
         </Reveal>
 
@@ -657,15 +657,9 @@ export default function App() {
           ))}
         </div>
 
-        {/* Aclaración de precio — una sola vez bajo las tarjetas */}
-        <p className="mt-6 text-center text-sm text-white/50">
-          El precio final depende de tu operación.
-        </p>
-
         {/* Cómo se define el precio */}
         <p className="mt-10 text-center text-base text-white/80 max-w-2xl mx-auto leading-relaxed">
-          El precio se ajusta a tu operación — lo definimos juntos en la llamada de 15 min.
-          Siempre arrancamos con un <span className="text-[#FFBF00] font-semibold">piloto gratis</span>: si no te sirve, no pagas.
+          El precio final depende de tu operación; lo definimos juntos en la llamada de 15 min.
         </p>
 
         {/* Urgencia honesta — escasez real */}
