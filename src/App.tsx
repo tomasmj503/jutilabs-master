@@ -640,9 +640,6 @@ export default function App() {
               {/* Ancla de precio — "desde" para que el comprador se autocalifique */}
               <div className="mb-6">
                 <div className={`font-display text-2xl md:text-3xl font-bold leading-tight ${p.popular ? 'text-[#09264A]' : 'text-[#FFBF00]'}`}>{p.anchor}</div>
-                <div className={`text-xs mt-1 ${p.popular ? 'text-[#8A9197]' : 'text-white/50'}`}>
-                  el precio final depende de tu operación
-                </div>
               </div>
 
               <ul className="space-y-3 mb-8 text-sm flex-1">
@@ -659,6 +656,11 @@ export default function App() {
             </div>
           ))}
         </div>
+
+        {/* Aclaración de precio — una sola vez bajo las tarjetas */}
+        <p className="mt-6 text-center text-sm text-white/50">
+          El precio final depende de tu operación.
+        </p>
 
         {/* Cómo se define el precio */}
         <p className="mt-10 text-center text-base text-white/80 max-w-2xl mx-auto leading-relaxed">
