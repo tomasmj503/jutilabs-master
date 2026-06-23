@@ -822,10 +822,6 @@ export default function App() {
             <div>© {new Date().getFullYear()} JUTILABS. Todos los derechos reservados.</div>
             <div className="flex items-center gap-4">
               <a href="#contacto" className="hover:text-white/70 transition-colors">Contacto</a>
-              <span className="text-white/20">·</span>
-              <a href="/privacidad" className="hover:text-white/70 transition-colors">Privacidad</a>
-              <span className="text-white/20">·</span>
-              <a href="/terminos" className="hover:text-white/70 transition-colors">Términos</a>
             </div>
           </div>
         </div>
