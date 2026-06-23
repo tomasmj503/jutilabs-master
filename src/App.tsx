@@ -811,9 +811,9 @@ export default function App() {
             <div className="inline-block"><Logo size="sm" onDark /></div>
             <p className="text-white/60 text-sm mt-5">Automatización IA para negocios de alimentos en Latinoamérica</p>
             <p className="text-white/30 text-xs mt-2">Bogotá, Colombia · Servicio en toda LATAM · Tom Muñoz, Fundador</p>
-            <a href={`https://wa.me/573025282411`} target="_blank" rel="noreferrer"
+            <a href={`https://wa.me/5712955028`} target="_blank" rel="noreferrer"
               className="inline-flex items-center gap-2 mt-6 text-[#FFBF00] text-sm font-semibold hover:underline">
-              <MessageSquare size={16} /> +57 302 528 2411
+              <MessageSquare size={16} /> +57 12955028
             </a>
           </div>
 
