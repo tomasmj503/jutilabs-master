@@ -261,8 +261,9 @@ export default function App() {
     { q: '¿Qué pasa si el asistente se equivoca con un pedido?', a: 'Lo ves todo en tu celular antes de que salga. Si algo no cuadra, pasa al operador humano. En la práctica, 99 de cada 100 pedidos salen bien solos.' },
     { q: '¿Funciona en mi país?', a: 'Sí. Trabajamos en Colombia, Perú, México, Chile y Ecuador. Tu asistente se adapta a tu moneda, tus métodos de pago (Yape, Nequi, Plin, Daviplata) y la forma de hablar de tu país.' },
     { q: '¿Esto reemplaza a Rappi o iFood?', a: 'No. Rappi te consigue clientes nuevos, eso sirve. Lo que automatizamos son los clientes que ya son tuyos — los que te escriben directo al WhatsApp. Esos pedidos no pagan comisión, y son los que hoy atiendes a mano.' },
-    { q: '¿Necesito computadora o POS?', a: 'No. Todo se maneja desde tu celular. Si ya tienes un POS, lo conectamos (plan Enterprise).' },
+    { q: '¿Necesito computadora o POS?', a: 'No. Todo se maneja desde tu celular. Si ya tienes un POS, lo conectamos.' },
     { q: '¿Y si mi WhatsApp se cae?', a: 'Usamos la WhatsApp Business Cloud API oficial de Meta — la misma que usan las empresas grandes. 99.9% de disponibilidad.' },
+    { q: '¿Solo haces bots de pedidos por WhatsApp?', a: 'Los pedidos por WhatsApp son donde más rápido se nota el ahorro, por eso empiezo ahí. Pero construyo automatizaciones a la medida — inventario, reportes, catálogos, back-office completo. Si tu negocio no encaja en el molde de restaurante, hablemos igual; seguro hay algo que se puede automatizar.' },
   ];
 
   return (
@@ -421,75 +422,95 @@ export default function App() {
         </Reveal>
       </Section>
 
-      {/* ══ CASOS DE USO — white ══ */}
-      <Section tone="white">
+      {/* ══ CASOS REALES — white ══ */}
+      <Section tone="white" id="casos">
         <Reveal className="text-center max-w-2xl mx-auto mb-14">
-          <Eyebrow>Cómo se ve en la práctica</Eyebrow>
+          <Eyebrow>Casos reales</Eyebrow>
           <h2 className="text-[32px] sm:text-4xl md:text-5xl font-bold text-[#09264A] mb-4">
-            3 negocios distintos.<br/>
-            <span className="text-[#09264A]">El mismo empleado de IA.</span>
+            No son ejemplos.<br/>
+            <span className="text-[#09264A]">Están funcionando hoy.</span>
           </h2>
           <p className="text-[#4A5159]">
-            Hemos visto estos escenarios una y otra vez. Si alguno te suena,
-            ya sabes por dónde empezamos.
+            Restaurantes de verdad, con su empleado de IA trabajando ahora mismo.
+            Estos son los sistemas, tal cual quedaron.
           </p>
         </Reveal>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {[
             {
-              tag: 'Pollería · Piura, Perú',
-              icon: '🍗',
-              title: 'Pollería de barrio',
-              pain: 'A la hora pico nadie alcanza a contestar el WhatsApp y los pedidos se enfrían en "visto".',
-              solution: 'Contesta al instante, arma el pedido, cobra y lo manda a cocina.',
-              outcome: 'Cero pedidos perdidos por no contestar a tiempo. Cierra sabiendo exactamente cuánto vendió — sin el celular en la mano.',
+              tag: 'Restaurante · Perú',
+              name: 'La Braza',
+              img: '/img/labraza/whatsapp-1.png',
+              imgAlt: 'La Braza — pedido por WhatsApp en lenguaje natural',
+              pain: 'En hora pico perdían pedidos — atendían el WhatsApp a mano, en dos teléfonos.',
+              does: 'Toma el pedido completo por WhatsApp: arma el pedido, pide la dirección, calcula el domicilio por distancia y cobra. Lee el comprobante de Yape solo y muestra cada pedido en un tablero de cocina en vivo.',
+              result: 'Dejaron de perder pedidos en hora pico. Hoy el sistema maneja 100+ pedidos al día.',
             },
             {
-              tag: 'Distribuidora mayorista',
-              icon: '🚚',
-              title: 'Distribuidor de cárnicos',
-              pain: 'Pedidos por voz, por foto, a media madrugada — y un error de cantidad cuesta caro.',
-              solution: 'Entiende el pedido venga como venga, lo confirma con el cliente y lo deja registrado.',
-              outcome: 'Pedidos confirmados antes de salir de la bodega. Cero errores por "mal entendí". Todo rastreable al cierre del día.',
+              tag: 'Restaurante · Bogotá',
+              name: 'Tío Toro',
+              img: '/img/tio-toro/whatsapp-venta.png',
+              imgAlt: 'Tío Toro — registro de una venta por WhatsApp',
+              pain: 'El dueño llevaba ventas, gastos y caja a mano, en hojas sueltas.',
+              does: 'Un asistente de WhatsApp registra ventas y gastos —por texto, por voz o por foto de la factura— y lleva la caja del día. Todo cae solo en un tablero en vivo.',
+              result: 'Por primera vez el dueño sabe exactamente cuánto produce el negocio cada día. Sin cuadernos, sin digitar.',
             },
-            {
-              tag: 'Proveedor B2B',
-              icon: '🍞',
-              title: 'Insumos para panaderías',
-              pain: 'Clientes que escriben temprano y necesitan respuesta ya, no en dos horas.',
-              solution: 'Responde en segundos, toma el pedido y agenda la entrega.',
-              outcome: 'Pedidos contestados a los 5 segundos, no a las 2 horas. Ningún cliente sin respuesta. Cierre de día con todo en un solo lugar.',
-            },
-          ].map((c) => (
-            <div key={c.title} className="bg-[#F5F6F7] rounded-2xl p-7 border border-[#E8EAED] flex flex-col">
-              <div className="flex items-center gap-3 mb-5">
-                <div className="text-3xl">{c.icon}</div>
-                <div className="label-caps text-[#09264A]">{c.tag}</div>
-              </div>
-              <h3 className="font-display font-bold text-[#09264A] text-lg mb-4 leading-snug">{c.title}</h3>
+          ].map((c, i) => (
+            <Reveal key={c.name} delay={(i + 1) as 1 | 2}>
+              <div className="bg-[#F5F6F7] rounded-2xl border border-[#E8EAED] overflow-hidden flex flex-col h-full">
+                {/* Screenshot real */}
+                <div className="bg-[#09264A] p-5 flex justify-center">
+                  <img
+                    src={c.img}
+                    alt={c.imgAlt}
+                    loading="lazy"
+                    className="rounded-xl max-h-[320px] w-auto shadow-xl"
+                  />
+                </div>
 
-              <div className="mb-4">
-                <div className="label-caps text-[#E53E3E] mb-1.5 text-[10px]">El dolor</div>
-                <p className="text-sm text-[#4A5159] leading-relaxed">{c.pain}</p>
-              </div>
+                <div className="p-7 flex flex-col flex-1">
+                  <div className="label-caps text-[#09264A] mb-1">{c.tag}</div>
+                  <h3 className="font-display font-bold text-[#09264A] text-2xl mb-5">{c.name}</h3>
 
-              <div className="mb-4">
-                <div className="label-caps text-[#09264A] mb-1.5 text-[10px]">Lo que hace</div>
-                <p className="text-sm text-[#4A5159] leading-relaxed">{c.solution}</p>
-              </div>
+                  <div className="mb-4">
+                    <div className="label-caps text-[#E53E3E] mb-1.5 text-[10px]">El dolor</div>
+                    <p className="text-sm text-[#4A5159] leading-relaxed">{c.pain}</p>
+                  </div>
 
-              <div className="mt-auto pt-4 border-t border-[#E8EAED]">
-                <div className="label-caps text-[#FFBF00] mb-1.5 text-[10px]" style={{ color: '#B88900' }}>Resultado</div>
-                <p className="text-sm font-semibold text-[#1C2228] leading-relaxed">{c.outcome}</p>
+                  <div className="mb-4">
+                    <div className="label-caps text-[#09264A] mb-1.5 text-[10px]">Lo que hace ahora</div>
+                    <p className="text-sm text-[#4A5159] leading-relaxed">{c.does}</p>
+                  </div>
+
+                  <div className="mt-auto pt-4 border-t border-[#E8EAED]">
+                    <div className="label-caps text-[#B88900] mb-1.5 text-[10px]">Resultado</div>
+                    <p className="text-sm font-semibold text-[#1C2228] leading-relaxed">{c.result}</p>
+                    <a
+                      href="https://tom.jutilabs.com"
+                      target="_blank"
+                      rel="noopener"
+                      className="inline-block mt-3 text-sm text-[#8A9197] underline underline-offset-2 hover:text-[#FFBF00]"
+                    >
+                      Ver el flujo técnico →
+                    </a>
+                  </div>
+                </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
 
         <p className="text-center text-sm text-[#8A9197] mt-10 max-w-2xl mx-auto">
-          * Basado en operaciones reales de clientes JUTILABS. Nombres omitidos por privacidad.
-          Cada implementación se adapta a tu negocio.
+          Clientes reales de JUTILABS.{' '}
+          <a
+            href="https://tom.jutilabs.com"
+            target="_blank"
+            rel="noopener"
+            className="text-[#09264A] font-semibold underline underline-offset-2 hover:text-[#FFBF00]"
+          >
+            Mira los sistemas por dentro →
+          </a>
         </p>
       </Section>
 
@@ -641,50 +662,13 @@ export default function App() {
             Menos que un medio tiempo.<br/>
             Y trabaja 24/7.
           </h2>
+          <p className="text-white/80 mb-2">
+            La inversión se define juntos en la llamada de 15 min, según tu operación — sin planes genéricos.
+          </p>
           <p className="text-white/60">
             Sin contratos eternos. Cancelas cuando quieras.
           </p>
         </Reveal>
-
-        <div className="grid md:grid-cols-3 gap-6 items-stretch">
-          {[
-            { name: 'Starter', tagline: 'Para el negocio que quiere dejar de perder pedidos por WhatsApp.', anchor: 'Desde $390.000 COP / mes', features: ['Empleado de IA que toma pedidos y cobra','Registro automático en tu Sheet','Dashboard en tu celular','Soporte'], cta: 'Agenda 15 min', popular: false },
-            { name: 'Pro', tagline: 'Toda tu operación en piloto automático.', anchor: 'Desde $890.000 COP / mes', features: ['Todo lo de Starter','Gastos por voz o foto','Caja y cierres del día','Postventa y reseñas automáticas','Reportes automáticos'], cta: 'Agenda 15 min', popular: true },
-            { name: 'Enterprise', tagline: 'Para cadenas o varios locales.', anchor: 'A la medida', features: ['Varios puntos','Conexión con tu POS','Integraciones a medida','Acompañamiento dedicado'], cta: 'Agenda 15 min', popular: false },
-          ].map((p) => (
-            <div key={p.name} className={`rounded-2xl p-8 relative flex flex-col ${p.popular ? 'bg-white text-[#1C2228] shadow-2xl md:-translate-y-3 border-2 border-[#FFBF00]' : 'bg-white/5 border border-white/10'}`}>
-              {p.popular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#FFBF00] text-[#09264A] text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider">
-                  Más popular
-                </div>
-              )}
-              <h3 className={`font-display text-2xl font-bold mb-1 ${p.popular ? 'text-[#09264A]' : 'text-white'}`}>{p.name}</h3>
-              <p className={`text-sm mb-5 ${p.popular ? 'text-[#4A5159]' : 'text-white/60'}`}>{p.tagline}</p>
-
-              {/* Ancla de precio — "desde" para que el comprador se autocalifique */}
-              <div className="mb-6">
-                <div className={`font-display text-2xl md:text-3xl font-bold leading-tight ${p.popular ? 'text-[#09264A]' : 'text-[#FFBF00]'}`}>{p.anchor}</div>
-              </div>
-
-              <ul className="space-y-3 mb-8 text-sm flex-1">
-                {p.features.map((f) => (
-                  <li key={f} className={`flex items-start gap-2 ${p.popular ? 'text-[#1C2228]/90' : 'text-white/90'}`}>
-                    <CheckCircle2 size={16} className={`shrink-0 mt-0.5 ${p.popular ? 'text-[#09264A]' : 'text-[#FFBF00]'}`} />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <a href="#contacto" className={`block text-center py-3 rounded-xl font-bold transition-all ${p.popular ? 'bg-[#FFBF00] text-[#09264A] hover:bg-[#FFD033] shadow-[0_4px_20px_-2px_rgb(255_191_0_/_0.35)]' : 'border-2 border-white/30 text-white hover:bg-white hover:text-[#09264A]'}`}>
-                {p.cta}
-              </a>
-            </div>
-          ))}
-        </div>
-
-        {/* Cómo se define el precio */}
-        <p className="mt-10 text-center text-base text-white/80 max-w-2xl mx-auto leading-relaxed">
-          El precio final depende de tu operación; lo definimos juntos en la llamada de 15 min.
-        </p>
 
         {/* Urgencia honesta — escasez real */}
         <p className="mt-6 text-center text-sm text-white/60 max-w-xl mx-auto">
@@ -731,6 +715,29 @@ export default function App() {
             y listo.
           </p>
         </div>
+      </Section>
+
+      {/* ══ QUIÉN ESTÁ DETRÁS — white ══ */}
+      <Section tone="white">
+        <Reveal className="text-center max-w-2xl mx-auto">
+          <Eyebrow>Quién está detrás</Eyebrow>
+          <h2 className="text-[32px] sm:text-4xl md:text-5xl font-bold text-[#09264A] mb-4">
+            No es una agencia. Soy yo, de punta a punta.
+          </h2>
+          <p className="text-[#4A5159] leading-relaxed">
+            Antes de la IA pasé más de 6 años en hotelería y A&B en EE. UU. y Colombia, y después
+            trabajé como analista de datos — Python, BigQuery. Esa mezcla de operación real + datos
+            + automatización es lo que uso para construir tu sistema yo mismo, sin intermediarios.
+          </p>
+          <a
+            href="https://tom.jutilabs.com"
+            target="_blank"
+            rel="noopener"
+            className="inline-block mt-5 text-[#09264A] font-semibold underline underline-offset-2 hover:text-[#FFBF00]"
+          >
+            Ver más proyectos →
+          </a>
+        </Reveal>
       </Section>
 
       {/* ══ FAQ — white ══ */}
