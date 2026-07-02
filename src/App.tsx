@@ -692,7 +692,7 @@ export default function App() {
           <div className="bg-[#FFBF00]/10 border border-[#FFBF00]/30 rounded-2xl p-7">
             <div className="label-caps text-[#FFBF00] mb-3">Tu empleado de IA</div>
             <ul className="space-y-2.5 text-sm text-white">
-              <li className="flex justify-between border-b border-white/10 pb-2 gap-3"><span>Mensualidad</span><span className="font-semibold text-[#FFBF00] text-right">desde $390.000 COP/mes</span></li>
+              <li className="flex justify-between border-b border-white/10 pb-2 gap-3"><span>Mensualidad</span><span className="font-semibold text-[#FFBF00] text-right">una fracción de un salario</span></li>
               <li className="flex justify-between border-b border-white/10 pb-2"><span>Prestaciones</span><span className="font-semibold text-[#FFBF00]">ninguna</span></li>
               <li className="flex justify-between border-b border-white/10 pb-2"><span>Horario</span><span className="font-semibold text-[#FFBF00]">24/7</span></li>
               <li className="flex justify-between"><span>Se enferma, falta, renuncia</span><span className="font-semibold text-[#FFBF00]">nunca</span></li>
