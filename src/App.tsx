@@ -192,7 +192,7 @@ function MiniForm({ className = '' }: { className?: string }) {
         type="submit" disabled={loading}
         className="bg-[#FFBF00] text-[#09264A] font-bold px-6 py-3 rounded-xl hover:bg-[#FFD033] transition-all shadow-[0_4px_20px_-2px_rgb(255_191_0_/_0.35)] disabled:opacity-60 whitespace-nowrap text-sm"
       >
-        {loading ? 'Enviando...' : 'Agenda 15 min'}
+        {loading ? 'Enviando...' : 'Escríbeme'}
       </button>
     </form>
   );
@@ -274,7 +274,7 @@ export default function App() {
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <Logo onDark animate />
           <Button href="#contacto" size="sm" variant="primary">
-            Agenda 15 min
+            Escríbeme
           </Button>
         </div>
       </header>
@@ -304,7 +304,7 @@ export default function App() {
             </p>
 
             <Button href="#contacto" size="lg" variant="primary" className="w-full sm:w-auto">
-              Agenda 15 min
+              Escríbeme
               <ArrowRight size={20} />
             </Button>
 
@@ -331,7 +331,7 @@ export default function App() {
         <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 mb-10">
           {[
             { v: '4 h/día', l: 'que tu equipo deja de perder anotando pedidos*' },
-            { v: '<1%', l: 'de errores en los pedidos*' },
+            { v: '100%', l: 'de tus pedidos quedan registrados' },
             { v: '2 semanas', l: 'y queda funcionando' },
             { v: '24/7', l: 'tu negocio nunca deja de contestar' },
           ].map((s) => (
@@ -797,7 +797,7 @@ export default function App() {
               ))}
 
               <Button type="submit" variant="primary" size="lg" disabled={loading} className="w-full">
-                {loading ? 'Enviando...' : <><Send size={18} /> Agenda 15 min</>}
+                {loading ? 'Enviando...' : <><Send size={18} /> Escríbeme</>}
               </Button>
 
               <p className="text-xs text-[#8A9197] text-center">
@@ -818,10 +818,6 @@ export default function App() {
             <div className="inline-block"><Logo size="sm" onDark /></div>
             <p className="text-white/60 text-sm mt-5">Automatización IA para negocios de alimentos en Latinoamérica</p>
             <p className="text-white/30 text-xs mt-2">Bogotá, Colombia · Servicio en toda LATAM · Tom Muñoz, Fundador</p>
-            <a href={`https://wa.me/5712955028`} target="_blank" rel="noreferrer"
-              className="inline-flex items-center gap-2 mt-6 text-[#FFBF00] text-sm font-semibold hover:underline">
-              <MessageSquare size={16} /> +57 12955028
-            </a>
           </div>
 
           {/* Línea legal al pie */}
@@ -837,7 +833,7 @@ export default function App() {
       {/* ══ STICKY MOBILE CTA ══ */}
       <div className="fixed bottom-0 left-0 w-full p-3 bg-white border-t border-[#E8EAED] shadow-lg md:hidden z-50">
         <Button href="#contacto" variant="primary" size="md" className="w-full">
-          Agenda 15 min
+          Escríbeme
         </Button>
       </div>
 
