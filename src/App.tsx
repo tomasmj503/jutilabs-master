@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import {
   CheckCircle2, ChevronDown, ArrowRight, MessageSquare,
   CreditCard, Truck, Star, BarChart3,
-  TrendingUp, Users, Send, Sparkles, Rocket
+  TrendingUp, Users, Send, Sparkles
 } from 'lucide-react';
 
 // ═════════════════════════════════════════════════════════════════════
@@ -554,25 +554,6 @@ export default function App() {
             </ul>
           </Card>
         </div>
-      </Section>
-
-      {/* ══ VISIÓN / ROADMAP — navy ══ */}
-      <Section tone="navy">
-        <Reveal className="text-center max-w-2xl mx-auto">
-          <div className="bg-[#FFBF00]/15 p-3 rounded-xl w-fit mx-auto mb-5">
-            <Rocket size={22} className="text-[#FFBF00]" />
-          </div>
-          <Eyebrow onDark>Hacia dónde va</Eyebrow>
-          <h2 className="text-[32px] sm:text-4xl md:text-5xl font-bold mb-5">
-            Hoy, tus pedidos.<br/>
-            <span className="text-[#FFBF00]">Mañana, toda tu operación.</span>
-          </h2>
-          <p className="text-white/70 text-base md:text-lg leading-relaxed">
-            Tu empleado de IA empieza por lo que más duele: vender y cobrar sin que vivas pegado al celular.
-            Con el tiempo aprende tu negocio y se hace cargo de más — los gastos, la caja, los clientes que vuelven.
-            No compras una app que se queda quieta; sumas a alguien que crece contigo.
-          </p>
-        </Reveal>
       </Section>
 
       {/* ══ DASHBOARD — navyDeep ══ */}
